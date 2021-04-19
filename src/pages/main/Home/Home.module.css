@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+@media (max-width: 512px) {
+  .card2 {
+    width: 300px !important;
+    height: 448px !important;
+  }
+  .topTittle {
+    font-size: 14px !important;
+  }
+  .topNote {
+    font-size: 32px !important;
+  }
+  .cntrl {
+    width: 263px !important;
+    margin: 5px;
+  }
+  .bottomText {
+    font-size: 12px !important;
+    line-height: 22px !important;
+    text-align: center !important;
+    letter-spacing: 0.75px !important;
+    color: #6e7191 !important;
+  }
+  .middle {
+    margin-top: 42px !important;
+  }
+  .imgHome {
+    width: 330px;
+  }
+  .now {
+    font-size: 18px !important;
+  }
+  .now1 {
+    font-size: 18px !important;
+  }
+  .line {
+    margin-left: 7px !important;
+  }
+  .view {
+    font-size: 14px !important;
+  }
+  .view1 {
+    font-size: 14px !important;
+  }
+  .flexContainer {
+    overflow-x: auto;
+  }
+  .imgAll {
+    margin-right: 15px;
+  }
+}
+.link {
+  color: black;
+}
+.titleHome {
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #a0a3bd;
+}
+.titleHome1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 45px;
+  color: #5f2eea;
+}
+.titleHome,
+.titleHome1 {
+  text-align: left;
+  margin: 0 auto;
+}
+.box1 {
+  margin-top: 120px;
+  margin-bottom: 64px;
+}
+.now {
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #5f2eea;
+}
+.now1 {
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #14142b;
+}
+.line {
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+.view {
+  float: right;
+  margin-top: 15px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #5f2eea;
+}
+.view1 {
+  float: right;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #5f2eea;
+}
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 56px;
+}
+.imgAll {
+  flex: 1;
+}
+.btnMonth {
+  flex: 1;
+  width: 127px;
+  height: 42px;
+  background-color: white;
+  border: 1px #5f2eea solid;
+  color: #5f2eea;
+  border-radius: 4px;
+  margin-right: 16px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.btnMonth:hover {
+  background-color: #5f2eea;
+  border: 1px #5f2eea solid;
+  color: #fff !important;
+  border-radius: 4px;
+  margin-right: 16px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.card2 {
+  width: 976px;
+  height: 372px;
+  text-align: center;
+  margin: 0 auto;
+  background: #ffffff;
+  box-shadow: 0px 16px 32px rgba(186, 186, 186, 0.3);
+  border-radius: 8px;
+}
+.topTittle {
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 10px;
+}
+.topNote {
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #5f2eea;
+}
+.form {
+  text-align: center;
+  justify-content: center;
+}
+.cntrl {
+  width: 306px !important;
+  height: 53px;
+  border: 2px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+  color: #a0a3bd;
+  margin-right: 16px;
+}
+.btn {
+  width: 120px !important;
+  height: 53px;
+  background: #5f2eea;
+  border-radius: 4px;
+  border: solid #5f2eea;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+}
+.bottomText {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #6e7191;
+}
+.Cont1 {
+  margin-top: 64px;
+}
+.Cont2 {
+  margin-top: 104px;
+}
+.Cont3 {
+  margin-top: 130px;
+  margin-bottom: 130px;
+}
+.top {
+  margin-top: 48px;
+}
+.middle {
+  margin-top: 48px;
+}
+.bottom {
+  margin-top: 40px;
+}
