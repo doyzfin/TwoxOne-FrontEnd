@@ -3,16 +3,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import Styles from "./Footer.module.css";
-import Logo from "../../assets/img/Tickitz 2.svg";
-import Sponsor1 from "../../assets/img/1.png";
-import Sponsor2 from "../../assets/img/2.png";
-import Sponsor3 from "../../assets/img/3.png";
-import logoFollow1 from "../../assets/img/eva_facebook-outline.png";
-import logoFollow2 from "../../assets/img/bx_bxl-instagram.png";
-import logoFollow3 from "../../assets/img/eva_twitter-outline.png";
-import logoFollow4 from "../../assets/img/feather_youtube.png";
+// import Logo from "../../assets/img/Tickitz 2.svg";
+import Sponsor1 from "../assets/img/1.png";
+import Sponsor2 from "../assets/img/2.png";
+import Sponsor3 from "../assets/img/3.png";
+import logoFollow1 from "../assets/img/eva_facebook-outline.png";
+import logoFollow2 from "../assets/img/bx_bxl-instagram.png";
+import logoFollow3 from "../assets/img/eva_twitter-outline.png";
+import logoFollow4 from "../assets/img/feather_youtube.png";
+import { withRouter } from "react-router-dom";
 
 class Footer extends Component {
+  handleFooter = (event) => {
+    event.preventDefault();
+    this.props.history.push("/home");
+  };
   render() {
     return (
       <>
@@ -20,7 +25,12 @@ class Footer extends Component {
           <Container className={Styles.desktop}>
             <Row>
               <Col sm={3}>
-                <img alt="" src={Logo} />
+                <p
+                  className={Styles.mainLogo}
+                  onClick={(event) => this.handleFooter(event)}
+                >
+                  TwoxOne
+                </p>
                 <p className={Styles.logoText}>
                   Stop waiting in line. Buy tickets conveniently, watch movies
                   quietly.
@@ -107,7 +117,7 @@ class Footer extends Component {
           <Container className={Styles.mobile}>
             <Row>
               <Col sm={3} className={Styles.first}>
-                <img alt="" src={Logo} />
+                <p className={Styles.mainLogo}>TwoxOne</p>
                 <p className={Styles.logoText}>
                   Stop waiting in line. Buy tickets conveniently, watch movies
                   quietly.
@@ -202,4 +212,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+export default withRouter(Footer);

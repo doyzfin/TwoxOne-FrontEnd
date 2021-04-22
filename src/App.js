@@ -18,12 +18,12 @@ class App extends Component {
           <Route path="/learning/basic-react" exact component={BasicReact} />
           <Route path="/learning/basic-home" exact component={BasicHome} />
           <Route
-            path="/learning/basic-movie-details"
+            path="/learning/basic-movie-details/:id"
             exact
             component={BasicMovieDetails}
           />
           <Route path="/home" exact component={Home} />
-          <Route path="/movie-page" exact component={Movies} />
+          <Route path="/movie-page/:id" exact component={Movies} />
           <Route path="/order-page" exact component={Order} />
           <Route path="/payment-page" exact component={Payment} />
           <Route path="/admin-page" exact component={Admin} />

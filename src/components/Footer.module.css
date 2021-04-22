@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Francois+One&display=swap");
 @media (max-width: 512px) {
   .desktop {
     display: none;
@@ -22,6 +23,14 @@
   .four {
     margin-bottom: 48px;
   }
+}
+.mainLogo {
+  font-family: "Francois One", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  color: #5f2eea;
+  margin-bottom: 0px;
+  cursor: pointer;
 }
 .mobile {
   display: none;
@@ -100,19 +109,19 @@ li {
   margin-top: 0px;
 }
 .colTwoLogo::before {
-  content: url("../../assets/img/eva_facebook-outline.png");
+  content: url("../assets/img/eva_facebook-outline.png");
   margin-right: 12px;
 }
 .colThreeLogo::before {
-  content: url("../../assets/img/bx_bxl-instagram.png");
+  content: url("../assets/img/bx_bxl-instagram.png");
   margin-right: 12px;
 }
 .colFourLogo::before {
-  content: url("../../assets/img/eva_twitter-outline.png");
+  content: url("../assets/img/eva_twitter-outline.png");
   margin-right: 12px;
 }
 .colFiveLogo::before {
-  content: url("../../assets/img/feather_youtube.png");
+  content: url("../assets/img/feather_youtube.png");
   margin-right: 12px;
 }
 .flexContainer1,

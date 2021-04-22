@@ -1,19 +1,47 @@
 import React, { Component } from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
-import Cards from "../../../components/Cards/Cards";
 
-import NavBar from "../../../components/NavBar/NavBarHome";
-import Footer from "../../../components/Footer/Footer";
+import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
+import axiosApiIntances from "../../../utils/axios";
+import Cards from "../../../components/Home/Cards";
+import NavBar from "../../../components/Home/NavBarHome";
+import Footer from "../../../components/Footer";
 import HomeImg from "../../../assets/img/Group 15.png";
 import Line from "../../../assets/img/Line 7.png";
 import Spd from "../../../assets/img/spd.png";
-import Jw from "../../../assets/img/jw.png";
-import Lion from "../../../assets/img/lion.png";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: "",
+      data: [],
+    };
+  }
+  componentDidMount() {
+    this.getData();
+  }
+  getData = () => {
+    console.log("Get Data");
+    axiosApiIntances
+      .get(`movie`)
+      .then((res) => {
+        this.setState({ data: res.data.data });
+      })
+      .catch((err) => console.log(err));
+  };
+  handleImage = (event) => {
+    event.preventDefault();
+    this.props.history.push("/movie-page");
+  };
+  handleMovieDetails = (event, id) => {
+    event.preventDefault();
+    this.props.history.push(`/movie-page/${id}`);
+  };
+
   render() {
+    console.log(this.state);
     return (
       <>
         <Container>
@@ -49,21 +77,22 @@ class Home extends Component {
               </Col>
             </Row>
             <div className={styles.flexContainer}>
-              <div className={styles.imgAll}>
-                <img alt="" src={Spd} />
-              </div>
-              <div className={styles.imgAll}>
-                <img alt="" src={Lion} />
-              </div>
-              <div className={styles.imgAll}>
-                <img alt="" src={Jw} />
-              </div>
-              <div className={styles.imgAll}>
-                <img alt="" src={Spd} />
-              </div>
-              <div className={styles.imgAll}>
-                <img alt="" src={Lion} />
-              </div>
+              {this.state.data.map((item, index) => {
+                const { movie_id } = item;
+                return (
+                  <>
+                    <div className={styles.imgAll} key={index}>
+                      <img
+                        alt=""
+                        src={Spd}
+                        onClick={(event) =>
+                          this.handleMovieDetails(event, movie_id)
+                        }
+                      />
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </Container>
           <Container className={styles.Cont2}>
