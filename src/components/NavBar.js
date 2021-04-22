@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavDropdown, Modal } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Modal,
+  Button,
+  Form,
+  Card,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 // import Logo from "../../assets/img/Tickitz1.png";
@@ -11,9 +21,12 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      isLogin: false,
+      isLogin: "",
       show: false,
     };
+  }
+  componentDidMount() {
+    this.handlePP();
   }
   handleNavbar = (event) => {
     event.preventDefault();
@@ -26,8 +39,15 @@ class NavBar extends Component {
   handleClose = () => {
     this.setState({ show: false });
   };
+
+  handlePP = () => {
+    const { login } = this.props;
+    console.log(login);
+    this.setState({ isLogin: login });
+  };
   render() {
     const { show } = this.state;
+    console.log(this.props);
     return (
       <>
         <Navbar expand="lg">
@@ -38,18 +58,18 @@ class NavBar extends Component {
           <Navbar.Collapse id="basic-navbar-nav" className="mr.auto">
             <Nav className="mr-auto">
               <Nav.Item>
-                <Link to="/movie-page" className={styles.link1}>
-                  Movie
+                <Link to="/home" className={styles.link1}>
+                  Home
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link to="/movie-page" className={styles.link1}>
-                  Cinema
+                <Link to="/payment-page" className={styles.link1}>
+                  Payment
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link to="/order-page" className={styles.link1}>
-                  Buy Ticket
+                <Link to="/profile-page" className={styles.link1}>
+                  Profile
                 </Link>
               </Nav.Item>
             </Nav>
@@ -75,11 +95,40 @@ class NavBar extends Component {
                 <Modal.Title>Search Movie</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <p>H1</p>
+                <Form inline>
+                  <Form.Control placeholder="Search Movie Name"></Form.Control>
+                  <Button>Search</Button>
+                </Form>
+                <Row>
+                  <Col xs={4}>
+                    <Card>Card Result Search Movie</Card>
+                  </Col>
+                  <Col xs={4}>
+                    <Card>Card Result Search Movie</Card>
+                  </Col>
+                  <Col xs={4}>
+                    <Card>Card Result Search Movie</Card>
+                  </Col>
+                  <Col xs={4}>
+                    <Card>Card Result Search Movie</Card>
+                  </Col>
+                  <Col xs={4}>
+                    <Card>Card Result Search Movie</Card>
+                  </Col>
+                  <Col xs={4}>
+                    <Card>Card Result Search Movie</Card>
+                  </Col>
+                </Row>
               </Modal.Body>
-              <Modal.Footer></Modal.Footer>
+              <Modal.Footer>© 2020 Tickitz. All Rights Reserved.</Modal.Footer>
             </Modal>
-            <img alt="" src={Profile} className={styles.pp} />
+            {this.state.isLogin ? (
+              <img alt="" src={Profile} className={styles.pp} />
+            ) : (
+              <Button className={styles.btn} onClick={this.handlePP}>
+                Sign Up
+              </Button>
+            )}
           </Navbar.Collapse>
         </Navbar>
       </>

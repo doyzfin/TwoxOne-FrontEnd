@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
-
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
 import axiosApiIntances from "../../../utils/axios";
 import Cards from "../../../components/Home/Cards";
-import NavBar from "../../../components/Home/NavBarHome";
+import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import HomeImg from "../../../assets/img/Group 15.png";
 import Line from "../../../assets/img/Line 7.png";
@@ -17,6 +16,7 @@ class Home extends Component {
     this.state = {
       id: "",
       data: [],
+      isLogin: false,
     };
   }
   componentDidMount() {
@@ -45,7 +45,7 @@ class Home extends Component {
     return (
       <>
         <Container>
-          <NavBar />
+          <NavBar login={this.state.isLogin} />
           <Container>
             <Row>
               <Col sm={6}>
