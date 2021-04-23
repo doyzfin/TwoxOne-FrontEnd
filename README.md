@@ -26,7 +26,7 @@ Frendly Interface for All user
 
 ## Getting Started
 
-1. Download this Project or you can type `git clone #link_git`
+1. Download this Project or you can type `git clone https://github.com/doyzfin/TwoxOne-FrontEnd.git`
 2. Open app's directory in CMD or Terminal
 3. Type `npm install` or `yarn install`
 4. Add .env file at root folder project
