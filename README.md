@@ -22,7 +22,7 @@ Frendly Interface for All user
 
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
 2. Node_modules `npm install` or `yarn install`
-3. Backend API TwoxOne-BackEnd [`here`](https://github.com/doyzfin)
+3. Backend API TwoxOne-BackEnd [`here`](https://github.com/doyzfin/TwoxOne-BackEnd)
 
 ## Getting Started
 
