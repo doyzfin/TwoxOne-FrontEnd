@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap");
+
+@media (max-width: 512px) {
+  .date {
+    text-align: center;
+    margin-bottom: 12px;
+    margin-top: 30px;
+  }
+  .city {
+    margin-left: 0px !important;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .overRow {
+    overflow-x: scroll;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 106px;
+  }
+  .mainCard {
+    width: 300px;
+    margin-right: 12px;
+  }
+  .allInput {
+    margin-bottom: 12px !important;
+  }
+  .show {
+    font-size: 30px;
+  }
+}
+.overRow {
+  margin-bottom: 106px;
+  /* flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  margin-top: 72px; */
+}
+.upper {
+  margin-top: 136px;
+}
+.show {
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+}
+.date {
+  background-color: #eff0f6;
+  border-radius: 6px;
+  width: 284px;
+  height: 56px;
+  border: 1px solid #eff0f6;
+  font-family: "Mulish", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4e4b66;
+}
+.city {
+  background-color: #eff0f6;
+  border-radius: 6px;
+  width: 284px;
+  height: 56px;
+  border: 1px solid #eff0f6;
+  margin-left: 24px;
+  font-family: "Mulish", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4e4b66;
+}
+.mainCard {
+  /* width: 381px;
+  height: 390px; */
+  border: 0.5px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 2px;
+  margin: 12px;
+}
+.sponsor {
+  width: 106.57px;
+  height: 39.64px;
+}
+.nameSponsor {
+  font-family: "Mulish", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+.addressSponsor {
+  font-family: "Mulish", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #6e7191;
+}
+.centerImg {
+  padding: 40px;
+}
+.centerText {
+  padding-top: 24px;
+}
+.time {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 23px;
+
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+
+  color: #4e4b66;
+}
+.namePrice {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 32px;
+  align-items: center;
+  letter-spacing: 0.75px;
+
+  color: #6b6b6b;
+}
+.price {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+
+  align-items: center;
+  text-align: right;
+  letter-spacing: 0.75px;
+}
+.boxPrice {
+  margin-top: 24px;
+}
+.btnBook {
+  background: #5f2eea;
+  border: 1px solid #5f2eea;
+  box-shadow: 0px 8px 24px rgba(95, 46, 234, 0.24);
+  border-radius: 4px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #f7f7fc;
+  margin-top: 32px;
+}
+.allInput {
+  margin-top: 42px;
+  margin-bottom: 72px;
+}

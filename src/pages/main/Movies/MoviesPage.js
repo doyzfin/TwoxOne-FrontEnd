@@ -4,7 +4,7 @@ import Footer from "../../../components/Footer";
 import axiosApiIntances from "../../../utils/axios";
 import Premiere from "../../../components/MoviePage/Premiere";
 // import ReactPaginate from "react-paginate";
-// import styles from "./Movie.module.css";
+import styles from "./Movie.module.css";
 import Img from "../../../assets/img/Bw.png";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
@@ -12,14 +12,6 @@ class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieName: "Spider-Man: Homecoming",
-      movieCategory: "Adventure, Action, Sci-Fi",
-      movieReleaseDate: "June 28, 2017",
-      movieDirect: "Jon Watss",
-      movieDuration: "2 hours 13 minutes ",
-      movieCast: "Tom Holland, Michael Keaton, Robert Downey Jr., ...",
-      synopsis:
-        "Thrilled by his experience with the Avengers, Peter returns home, where he lives with his Aunt May, under the watchful eye of his new mentor Tony Stark, Peter tries to fall back into his normal daily routine - distracted by thoughts of proving himself to be more than just your friendly neighborhood Spider-Man - but when the Vulture emerges as a new villain, everything that Peter holds most important will be threatened. ",
       data: {},
       pagination: {},
       page: 1,
@@ -28,16 +20,18 @@ class Movies extends Component {
     };
   }
   componentDidMount() {
-    this.getData();
+    console.log(this.props.match.params);
+    const { id } = this.props.match.params;
+    this.getData(id);
   }
   getData = (id) => {
-    console.log("Get Data");
+    // console.log("Get Data");
 
     axiosApiIntances
-      .get(`movie`)
+      .get(`movie/${id}`)
       .then((res) => {
-        console.log(res);
-        this.setState({ data: res.data.data });
+        // console.log(res.data.data[0]);
+        this.setState({ data: res.data.data[0] });
       })
       .catch((err) => console.log(err));
   };
@@ -49,56 +43,56 @@ class Movies extends Component {
   };
   render() {
     const {
-      movieName,
-      movieCategory,
-      movieReleaseDate,
-      movieDirect,
-      movieDuration,
-      movieCast,
-      synopsis,
-    } = this.state;
-    console.log(this.state);
+      movie_name,
+      movie_category,
+      movie_release_date,
+      movie_duration,
+      movie_director,
+      movie_cast,
+      movie_synopsis,
+    } = this.state.data;
+    console.log(this.state.data);
 
     return (
       <>
         <Container>
           <NavBar login={this.state.isLogin} />
-          <Container>
+          <Container fluid>
             <Row>
-              <Col sm={3}>
-                <Card>
-                  <Card.Body>
-                    <img alt="" src={Img} />
-                  </Card.Body>
+              <Col sm={4}>
+                <Card className={styles.cardImg}>
+                  <Card.Img src={Img} className={styles.imgMain} />
                 </Card>
               </Col>
-              <Col sm={9}>
-                <div>
-                  <h1>{movieName}</h1>
-                  <p>{movieCategory}</p>
+              <Col sm={8}>
+                <div className={styles.dataMv}>
+                  <p className={styles.mvTitle}>{movie_name}</p>
+                  <p className={styles.mvCategory}>{movie_category}</p>
                 </div>
                 <div>
-                  <p>Release Date</p>
-                  <p>{movieReleaseDate}</p>
+                  <p className={styles.subMv}>Release Date</p>
+                  <p className={styles.mainMv}>{movie_release_date}</p>
                 </div>
                 <div>
-                  <p>Duration</p>
-                  <p>{movieDuration}</p>
+                  <p className={styles.subMv}>Duration</p>
+                  <p className={styles.mainMv}>{movie_duration}</p>
                 </div>
                 <div>
-                  <p>Directed by</p>
-                  <p>{movieDirect}</p>
+                  <p className={styles.subMv}>Directed by</p>
+                  <p className={styles.mainMv}>{movie_director}</p>
                 </div>
                 <div>
-                  <p>Cast</p>
-                  <p>{movieCast}</p>
+                  <p className={styles.subMv}>Cast</p>
+                  <p className={styles.mainMv}>{movie_cast}</p>
                 </div>
               </Col>
             </Row>
             <Row>
               <Col>
-                <p>Synopsis</p>
-                <p>{synopsis}</p>
+                <div className={styles.syn}>
+                  <p className={styles.synName}>Synopsis</p>
+                  <p className={styles.synContent}>{movie_synopsis}</p>
+                </div>
               </Col>
             </Row>
             <Premiere />

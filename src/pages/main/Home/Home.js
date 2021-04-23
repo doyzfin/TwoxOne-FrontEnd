@@ -80,17 +80,17 @@ class Home extends Component {
               {this.state.data.map((item, index) => {
                 const { movie_id } = item;
                 return (
-                  <>
-                    <div className={styles.imgAll} key={index}>
-                      <img
-                        alt=""
-                        src={Spd}
-                        onClick={(event) =>
-                          this.handleMovieDetails(event, movie_id)
-                        }
-                      />
-                    </div>
-                  </>
+                  // <>
+                  <div className={styles.imgAll} key={index}>
+                    <img
+                      alt=""
+                      src={Spd}
+                      onClick={(event) =>
+                        this.handleMovieDetails(event, movie_id)
+                      }
+                    />
+                  </div>
+                  // </>
                 );
               })}
             </div>

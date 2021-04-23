@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+@media (max-width: 512px) {
+  .cardImg {
+    margin-bottom: 12px;
+  }
+  .mainCard1 {
+    padding: 10px !important;
+  }
+  .labelForm {
+    font-size: 14px !important;
+  }
+  .btnRight {
+    float: none !important;
+    text-align: center;
+  }
+  .btnSubmit {
+    margin-left: 0px !important;
+    margin-top: 12px;
+  }
+  .formBottom {
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 12px !important;
+  }
+  .mainCardBottom {
+    padding: 15px !important;
+  }
+  .overRow {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .mainText1 {
+    text-align: center;
+  }
+  .labelForm1 {
+    font-size: 9px !important;
+  }
+}
+
+.mainBackground {
+  background-color: #f5f6f8;
+}
+.mainText {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+  margin-top: 58px;
+  margin-bottom: 24px;
+}
+.mainText1 {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+  margin-top: 58px;
+  margin-bottom: 24px;
+}
+.cardImg {
+  background: #ffffff;
+  border: 0.5px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 36px;
+}
+.labelForm {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  color: #4e4b66;
+}
+.labelForm1 {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  color: #4e4b66;
+}
+.controlForm {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #4e4b66;
+  height: 64px;
+  background: #fcfdfe;
+
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.synName {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  color: #4e4b66;
+  margin-top: 25px;
+}
+.synContent {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: #4e4b66;
+}
+.btnRight {
+  float: right;
+  margin-top: 41px;
+}
+.btnReset {
+  background: #ffffff;
+  border: 3px solid #5f2eea;
+  box-shadow: 0px 8px 24px rgba(95, 46, 234, 0.24);
+  border-radius: 4px;
+  width: 181px;
+  height: 47px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #5f2eea;
+}
+.btnSubmit {
+  background: #5f2eea;
+  box-shadow: 0px 8px 24px rgba(95, 46, 234, 0.24);
+  border-radius: 4px;
+  border: 3px solid #5f2eea;
+  width: 181px;
+  height: 47px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #f7f7fc;
+  margin-left: 23px;
+}
+.inputSort {
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  width: 132px;
+  height: 51px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #4e4b66;
+}
+.inputSearch {
+  width: 313px;
+  height: 51px;
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #4e4b66;
+}
+.formBottom {
+  float: right;
+  margin-top: 56px;
+  margin-bottom: 24px;
+}
+.cardBottom {
+  background: #ffffff;
+  border: 0.5px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 10px;
+}
+.imgCard {
+  width: 159px;
+  height: 244px;
+  text-align: center;
+  margin: 0 auto;
+}
+.mvTitles {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #14142b;
+}
+.mvCategory {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  color: #a0a3bd;
+}
+.mainCardBottom {
+  padding: 45px 73px;
+  margin-bottom: 106px;
+}
+.btnUpdt {
+  border: 1px solid #5f2eea;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #5f2eea;
+}
+.btnDlt {
+  border: 1px solid #ed2e7e;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ed2e7e;
+}
+.mainCard1 {
+  padding: 56px 40px;
+}
