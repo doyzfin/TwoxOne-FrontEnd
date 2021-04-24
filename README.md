@@ -22,11 +22,11 @@ Frendly Interface for All user
 
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
 2. Node_modules `npm install` or `yarn install`
-3. Backend API TwoxOne-BackEnd [`here`](https://github.com/doyzfin)
+3. Backend API TwoxOne-BackEnd [`here`](https://github.com/doyzfin/TwoxOne-BackEnd)
 
 ## Getting Started
 
-1. Download this Project or you can type `git clone #link_git`
+1. Download this Project or you can type `git clone https://github.com/doyzfin/TwoxOne-FrontEnd.git`
 2. Open app's directory in CMD or Terminal
 3. Type `npm install` or `yarn install`
 4. Add .env file at root folder project
