@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
 import axiosApiIntances from "../../../utils/axios";
+import ModalView from "../../../components/Home/ModalViewAll";
 import Cards from "../../../components/Home/Cards";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
@@ -17,6 +18,8 @@ class Home extends Component {
       id: "",
       data: [],
       isLogin: false,
+      setModalShow: false,
+      isClose: false,
     };
   }
   componentDidMount() {
@@ -39,9 +42,15 @@ class Home extends Component {
     event.preventDefault();
     this.props.history.push(`/movie-page/${id}`);
   };
-
+  handleModalView = () => {
+    this.setState({ setModalShow: true });
+  };
+  handleClose = () => {
+    this.setState({ setModalShow: false });
+  };
   render() {
     console.log(this.state);
+    const { setModalShow, id } = this.state;
     return (
       <>
         <Container>
@@ -71,9 +80,15 @@ class Home extends Component {
                 </div>
               </Col>
               <Col xs={6}>
-                <Link to="/view" className={styles.view}>
+                <Link className={styles.view} onClick={this.handleModalView}>
                   View All
                 </Link>
+                <ModalView
+                  show={setModalShow}
+                  handleClose={this.handleClose}
+                  getData={this.state.data}
+                  mv={this.handleMovieDetails}
+                />
               </Col>
             </Row>
             <div className={styles.flexContainer}>
@@ -85,6 +100,7 @@ class Home extends Component {
                     <img
                       alt=""
                       src={Spd}
+                      className={styles.imgClick}
                       onClick={(event) =>
                         this.handleMovieDetails(event, movie_id)
                       }

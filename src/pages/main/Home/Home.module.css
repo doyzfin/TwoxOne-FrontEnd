@@ -219,3 +219,6 @@
 .bottom {
   margin-top: 40px;
 }
+.imgClick {
+  cursor: pointer;
+}
