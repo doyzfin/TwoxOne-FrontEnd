@@ -20,11 +20,35 @@ class Home extends Component {
       isLogin: false,
       setModalShow: false,
       isClose: false,
+      isUp: false,
+      month: [
+        "September",
+        "October",
+        "November",
+        "December",
+        "January",
+        "Febuary",
+        "March",
+        "April",
+        "May",
+      ],
     };
   }
   componentDidMount() {
     this.getData();
   }
+
+  // getDataMonth = () => {
+  //   console.log("Get Data");
+  //   axiosApiIntances
+  //     .get(`movie/month/09`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.setState({ data: res.data.data });
+  //     })
+  //     .catch((err) => console.log(err));
+  //   this.getData();
+  // };
   getData = () => {
     console.log("Get Data");
     axiosApiIntances
@@ -43,14 +67,17 @@ class Home extends Component {
     this.props.history.push(`/movie-page/${id}`);
   };
   handleModalView = () => {
-    this.setState({ setModalShow: true });
+    this.setState({ setModalShow: true, isUp: false });
   };
   handleClose = () => {
     this.setState({ setModalShow: false });
   };
+  handleViewAll = () => {
+    this.setState({ setModalShow: true, isUp: true });
+  };
   render() {
     console.log(this.state);
-    const { setModalShow, id } = this.state;
+    const { setModalShow, isUp } = this.state;
     return (
       <>
         <Container>
@@ -88,6 +115,7 @@ class Home extends Component {
                   handleClose={this.handleClose}
                   getData={this.state.data}
                   mv={this.handleMovieDetails}
+                  upComing={this.handleViewAll}
                 />
               </Col>
             </Row>
@@ -119,23 +147,32 @@ class Home extends Component {
                 </div>
               </Col>
               <Col xs={4}>
-                <Link to="/view" className={styles.view1}>
+                <Link className={styles.view} onClick={this.handleViewAll}>
                   View All
                 </Link>
+                <ModalView
+                  show={setModalShow}
+                  handleClose={this.handleClose}
+                  getData={this.state.data}
+                  mv={this.handleMovieDetails}
+                  upComing={isUp}
+                />
               </Col>
             </Row>
             <div className={styles.flexContainer}>
-              <Button className={styles.btnMonth}>September</Button>
-              <Button className={styles.btnMonth}>October</Button>
-              <Button className={styles.btnMonth}>November</Button>
-              <Button className={styles.btnMonth}>Desember</Button>
-              <Button className={styles.btnMonth}>January</Button>
-              <Button className={styles.btnMonth}>Febuary</Button>
-              <Button className={styles.btnMonth}>March</Button>
-              <Button className={styles.btnMonth}>April</Button>
-              <Button className={styles.btnMonth}>May</Button>
+              {this.state.month.map((item, index) => {
+                return (
+                  <Button
+                    className={styles.btnMonth}
+                    key={index}
+                    onClick={this.getData}
+                  >
+                    {item}
+                  </Button>
+                );
+              })}
             </div>
-            <Cards />
+            <Cards data={this.state.data} mvDetails={this.handleMovieDetails} />
           </Container>
           <Container className={styles.Cont3}>
             <Card className={styles.card2}>

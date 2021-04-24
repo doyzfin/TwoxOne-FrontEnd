@@ -4,9 +4,10 @@ import spd from "../../assets/img/spd.png";
 
 class ModalView extends Component {
   componentDidMount() {}
+
   render() {
+    const { show, handleClose, upComing } = this.props;
     console.log(this.props);
-    const { show, handleClose } = this.props;
     return (
       <>
         <Modal
@@ -17,17 +18,32 @@ class ModalView extends Component {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>All Movies</Modal.Title>
+            <Modal.Title>
+              {upComing ? "Upcoming Movies" : "All Movies"}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Row>
               {this.props.getData.map((item, index) => {
-                const { movie_name, movie_id } = item;
+                const {
+                  movie_name,
+                  movie_id,
+                  movie_category,
+                  movie_release_date,
+                } = item;
                 return (
-                  <Col sm={4}>
+                  <Col xs={4}>
                     <Card key={index}>
-                      <Card.Img src={spd} onClick={this.props.mv} />
+                      <Card.Img
+                        src={spd}
+                        onClick={(event) => this.props.mv(event, movie_id)}
+                      />
                       <Card.Title>{movie_name}</Card.Title>
+                      <Card.Body>
+                        {movie_category}
+                        <hr />
+                        {movie_release_date}
+                      </Card.Body>
                     </Card>
                   </Col>
                 );
