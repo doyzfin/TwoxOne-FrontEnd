@@ -42,7 +42,7 @@ class NavBar extends Component {
 
   handlePP = () => {
     const { login } = this.props;
-    console.log(login);
+
     this.setState({ isLogin: login });
   };
   render() {

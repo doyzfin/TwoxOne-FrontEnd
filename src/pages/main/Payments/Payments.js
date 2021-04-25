@@ -9,13 +9,88 @@ import {
   Button,
   Form,
   InputGroup,
+  Popover,
+  OverlayTrigger,
 } from "react-bootstrap";
 import warn from "../../../assets/img/Vector.png";
 import styles from "./Payment.module.css";
 import Pay from "../../../assets/img/logos_google-pay.png";
-import { Link } from "react-router-dom";
-class Order extends Component {
+import { Link, withRouter } from "react-router-dom";
+
+class Payment extends Component {
+  constructor() {
+    super();
+    this.state = {
+      pay: [
+        {
+          idPay: 1,
+          namePay: "Google Pay",
+        },
+        {
+          idPay: 2,
+          namePay: "Visa",
+        },
+        {
+          idPay: 3,
+          namePay: "Gojek",
+        },
+        {
+          idPay: 4,
+          namePay: "Paypal",
+        },
+        {
+          idPay: 5,
+          namePay: "Dana",
+        },
+        {
+          idPay: 6,
+          namePay: "BCA",
+        },
+        {
+          idPay: 7,
+          namePay: "BRI",
+        },
+        {
+          idPay: 8,
+          namePay: "OVO",
+        },
+      ],
+      selectedPay: "",
+      isSelect: false,
+      form: {
+        fullName: "",
+        email: "",
+        phone: "",
+      },
+    };
+  }
+  selectedUser = (num) => {
+    console.log(num);
+    this.setState({
+      selectedPay: [...this.state.selectedPay, num],
+    });
+    if (this.state.selectedPay.length < 1) {
+      this.setState({ isSelect: true });
+    } else {
+      this.setState({ selectedPay: "" });
+    }
+  };
+  handlePrev = (event) => {
+    event.preventDefault();
+    this.props.history.push("order-page");
+  };
   render() {
+    localStorage.setItem(`methodPay`, this.state.selectedPay);
+    const popover = (
+      <Popover id="popover-basic">
+        <Popover.Title>
+          {`Metode Pembayaran  ${this.state.selectedPay}`}
+        </Popover.Title>
+        <Popover.Content>
+          <strong>Enjoy your Movie</strong>
+        </Popover.Content>
+      </Popover>
+    );
     return (
       <>
         <Container>
@@ -30,7 +105,8 @@ class Order extends Component {
                       Date & time
                     </Col>
                     <Col xs={8} className={styles.note2}>
-                      Tuesday, 07 July 2020 at 02:00pm
+                      {localStorage.getItem(`dateTime`)} at{" "}
+                      {localStorage.getItem(`timeBook`)}
                     </Col>
                   </Row>
                   <hr />
@@ -39,7 +115,7 @@ class Order extends Component {
                       Movie title
                     </Col>
                     <Col xs={8} className={styles.note2}>
-                      Spider-Man: Homecoming
+                      {localStorage.getItem(`movieName`)}
                     </Col>
                   </Row>
                   <hr />
@@ -48,7 +124,7 @@ class Order extends Component {
                       Cinema name
                     </Col>
                     <Col xs={8} className={styles.note2}>
-                      CineOne21 Cinema
+                      {localStorage.getItem(`premiereName`)}
                     </Col>
                   </Row>
                   <hr />
@@ -57,7 +133,7 @@ class Order extends Component {
                       Number of tickets
                     </Col>
                     <Col xs={8} className={styles.note2}>
-                      3 pieces
+                      {localStorage.getItem(`lengthTicket`)} pieces
                     </Col>
                   </Row>
                   <hr />
@@ -66,7 +142,7 @@ class Order extends Component {
                       Total payment
                     </Col>
                     <Col xs={8} className={styles.note3}>
-                      $30,00
+                      {localStorage.getItem(`totalPrice`)},00
                     </Col>
                   </Row>
                 </Card.Body>
@@ -75,46 +151,29 @@ class Order extends Component {
               <Card className={styles.mainCard2}>
                 <Card.Body>
                   <Row className={styles.rowOver}>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
-                    <Col sm={3}>
-                      <Card className={styles.cardImg}>
-                        <img src={Pay} alt="" className={styles.imgCard} />
-                      </Card>
-                    </Col>
+                    {this.state.pay.map((item, index) => {
+                      return (
+                        <Col sm={3} key={index}>
+                          <OverlayTrigger
+                            trigger="click"
+                            placement="right"
+                            overlay={popover}
+                            disabled
+                          >
+                            <Card
+                              className={styles.cardImg}
+                              onClick={() => this.selectedUser(item.namePay)}
+                            >
+                              <img
+                                src={Pay}
+                                alt=""
+                                className={styles.imgCard}
+                              />
+                            </Card>
+                          </OverlayTrigger>
+                        </Col>
+                      );
+                    })}
                   </Row>
                   <hr />
                   <p className={styles.textOr}>Or</p>
@@ -128,7 +187,12 @@ class Order extends Component {
               </Card>
               <Row className={styles.btnBottom}>
                 <Col sm={6}>
-                  <Button className={styles.btnPrev}>Previous Step</Button>
+                  <Button
+                    className={styles.btnPrev}
+                    onClick={(event) => this.handlePrev(event)}
+                  >
+                    Previous Step
+                  </Button>
                 </Col>
                 <Col sm={6}>
                   <Button className={styles.btnPay}>Pay your Order</Button>
@@ -213,4 +277,4 @@ class Order extends Component {
   }
 }
 
-export default Order;
+export default withRouter(Payment);

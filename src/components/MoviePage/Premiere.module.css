@@ -30,6 +30,19 @@
     font-size: 30px;
   }
 }
+.selectedTime {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 23px;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: white !important;
+  display: none;
+}
 .overRow {
   margin-bottom: 106px;
   /* flex-direction: row;
@@ -103,7 +116,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 23px;
-
+  cursor: pointer;
   align-items: center;
   text-align: center;
   letter-spacing: 0.75px;

@@ -13,10 +13,13 @@ class Movies extends Component {
     super(props);
     this.state = {
       data: {},
+      premiere: {},
       pagination: {},
       page: 1,
       id: "",
       isLogin: true,
+      selectedTime: "",
+      isSelect: false,
     };
   }
   componentDidMount() {
@@ -25,15 +28,22 @@ class Movies extends Component {
     this.getData(id);
   }
   getData = (id) => {
-    // console.log("Get Data");
-
     axiosApiIntances
       .get(`movie/${id}`)
       .then((res) => {
-        // console.log(res.data.data[0]);
         this.setState({ data: res.data.data[0] });
       })
       .catch((err) => console.log(err));
+  };
+  selectedUser = (time) => {
+    this.setState({
+      selectedTime: [...this.state.selectedTime, time],
+    });
+    if (this.state.selectedTime.length < 1) {
+      this.setState({ isSelect: true });
+    } else {
+      this.setState({ isSelect: false });
+    }
   };
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -41,6 +51,7 @@ class Movies extends Component {
       this.getData();
     });
   };
+
   render() {
     const {
       movie_name,
@@ -51,7 +62,7 @@ class Movies extends Component {
       movie_cast,
       movie_synopsis,
     } = this.state.data;
-    console.log(this.state.data);
+    localStorage.setItem(`timeBook`, this.state.selectedTime);
 
     return (
       <>
@@ -67,6 +78,7 @@ class Movies extends Component {
               <Col sm={8}>
                 <div className={styles.dataMv}>
                   <p className={styles.mvTitle}>{movie_name}</p>
+                  {localStorage.setItem(`movieName`, `${movie_name}`)}
                   <p className={styles.mvCategory}>{movie_category}</p>
                 </div>
                 <div>
@@ -95,7 +107,10 @@ class Movies extends Component {
                 </div>
               </Col>
             </Row>
-            <Premiere />
+            <Premiere
+              selectUser={this.selectedUser.bind(this)}
+              selectStyle={this.state.isSelect}
+            />
           </Container>
           <Footer />
         </Container>

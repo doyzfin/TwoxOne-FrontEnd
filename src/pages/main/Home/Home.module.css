@@ -30,6 +30,7 @@
   }
   .imgHome {
     width: 330px;
+    margin: 12px;
   }
   .now {
     font-size: 18px !important;
@@ -52,6 +53,19 @@
   .imgAll {
     margin-right: 15px;
   }
+  .allMovies {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+}
+.allMovies {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.imgAll {
+  margin-bottom: 12px;
 }
 .link {
   color: black;
@@ -115,9 +129,7 @@
   margin-top: 40px;
   margin-bottom: 56px;
 }
-.imgAll {
-  flex: 1;
-}
+
 .btnMonth {
   flex: 1;
   width: 127px;

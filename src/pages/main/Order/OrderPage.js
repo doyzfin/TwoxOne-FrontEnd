@@ -5,6 +5,8 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import styles from "./Order.module.css";
 import Seat from "../../../components/Order/Seat/Seat";
 import Sponsor1 from "../../../assets/img/1.png";
+import { withRouter } from "react-router-dom";
+
 class Order extends Component {
   constructor() {
     super();
@@ -18,15 +20,23 @@ class Order extends Component {
     this.setState({
       selectedSeat: [...this.state.selectedSeat, seat],
     });
-    console.log(seat);
   };
-  booking = () => {
+  booking = (event) => {
+    event.preventDefault();
     console.log("Booking");
     const booking = JSON.stringify(this.state.selectedSeat);
-    localStorage.setItem("bookingSeat", booking);
+    localStorage.setItem(`bookingSeat`, booking);
+    this.props.history.push("payment-page");
+  };
+  handleChange = (event) => {
+    event.preventDefault();
+    this.props.history.push("home");
   };
   render() {
     const { reservedSeat, selectedSeat } = this.state;
+    localStorage.setItem(`lengthTicket`, selectedSeat.length);
+    const totalPrice = "$" + selectedSeat.length * 10;
+
     return (
       <>
         <Container>
@@ -37,12 +47,13 @@ class Order extends Component {
               <Card className={styles.firstCard}>
                 <Row>
                   <Col xs={6} className={styles.mvName}>
-                    Spider-Man: Homecoming
+                    {localStorage.getItem(`movieName`)}
                   </Col>
                   <Col xs={6}>
                     <Button
                       variant="outline-secondary"
                       className={styles.btnChange}
+                      onClick={(event) => this.handleChange(event)}
                     >
                       Change Movie
                     </Button>
@@ -154,6 +165,7 @@ class Order extends Component {
                     variant="primary"
                     size="md"
                     className={styles.btnChangeMv}
+                    onClick={(event) => this.handleChange(event)}
                   >
                     Change your movie
                   </Button>
@@ -163,6 +175,7 @@ class Order extends Component {
                     variant="primary"
                     size="md"
                     className={styles.btnBook}
+                    onClick={(event) => this.booking(event)}
                   >
                     Booking
                   </Button>
@@ -177,7 +190,7 @@ class Order extends Component {
                     <img alt="" src={Sponsor1} className={styles.sponsorImg} />
                   </Card.Body>
                   <Card.Title className={styles.nameSponsor}>
-                    CineOne21 Cinema
+                    {localStorage.getItem(`premiereName`)}
                   </Card.Title>
                 </div>
                 <Card.Body>
@@ -186,15 +199,15 @@ class Order extends Component {
                       Movie selected
                     </Col>
                     <Col xs={8} className={styles.subCard1}>
-                      Spider-Man: Homecoming
+                      {localStorage.getItem(`movieName`)}
                     </Col>
                   </Row>
                   <Row>
                     <Col xs={7} className={styles.subCard}>
-                      Tuesday, 07 July 2020
+                      {localStorage.getItem(`dateTime`)}
                     </Col>
                     <Col xs={5} className={styles.subCard1}>
-                      02:00pm
+                      {localStorage.getItem(`timeBook`)}
                     </Col>
                   </Row>
                   <Row>
@@ -202,7 +215,7 @@ class Order extends Component {
                       One ticket price
                     </Col>
                     <Col xs={5} className={styles.subCard1}>
-                      $10
+                      ${localStorage.getItem(`price`)}
                     </Col>
                   </Row>
                   <Row>
@@ -210,7 +223,7 @@ class Order extends Component {
                       Seat choosed
                     </Col>
                     <Col xs={5} className={styles.subCard1}>
-                      C4, C5, C6
+                      {selectedSeat + ","}
                     </Col>
                   </Row>
                   <hr />
@@ -219,7 +232,8 @@ class Order extends Component {
                       Total Payment
                     </Col>
                     <Col xs={5} className={styles.subCardPay}>
-                      $30
+                      {totalPrice}
+                      {localStorage.setItem(`totalPrice`, `${totalPrice}`)}
                     </Col>
                   </Row>
                 </Card.Body>
@@ -233,4 +247,4 @@ class Order extends Component {
   }
 }
 
-export default Order;
+export default withRouter(Order);

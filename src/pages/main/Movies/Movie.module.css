@@ -48,16 +48,16 @@
 }
 
 .cardImg {
-  width: 332px;
-  height: 458px;
+  /* width: 332px;
+  height: 458px; */
   padding: 48px;
   border: 2px solid #dedede;
   box-sizing: border-box;
   border-radius: 16px;
 }
 .imgMain {
-  width: 236.72px;
-  height: 362.83px;
+  /* width: 236.72px;
+  height: 362.83px; */
   text-align: center;
   justify-content: center;
 }

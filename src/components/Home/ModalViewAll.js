@@ -32,8 +32,8 @@ class ModalView extends Component {
                   movie_release_date,
                 } = item;
                 return (
-                  <Col xs={4}>
-                    <Card key={index}>
+                  <Col xs={4} key={index}>
+                    <Card>
                       <Card.Img
                         src={spd}
                         onClick={(event) => this.props.mv(event, movie_id)}

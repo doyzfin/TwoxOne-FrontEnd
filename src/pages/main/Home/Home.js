@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styles from "./Home.module.css";
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
 import axiosApiIntances from "../../../utils/axios";
 import ModalView from "../../../components/Home/ModalViewAll";
@@ -17,46 +16,88 @@ class Home extends Component {
     this.state = {
       id: "",
       data: [],
+      data2: [],
       isLogin: false,
       setModalShow: false,
       isClose: false,
       isUp: false,
+      isMonth: false,
       month: [
-        "September",
-        "October",
-        "November",
-        "December",
-        "January",
-        "Febuary",
-        "March",
-        "April",
-        "May",
+        {
+          numMonth: "09",
+          month: "September",
+        },
+        {
+          numMonth: "10",
+          month: "October",
+        },
+        {
+          numMonth: "11",
+          month: "November",
+        },
+        {
+          numMonth: "12",
+          month: "December",
+        },
+
+        {
+          numMonth: "01",
+          month: "January",
+        },
+        {
+          numMonth: "02",
+          month: "Febuary",
+        },
+        {
+          numMonth: "03",
+          month: "March",
+        },
+        {
+          numMonth: "04",
+          month: "April",
+        },
+        {
+          numMonth: "05",
+          month: "May",
+        },
       ],
+      button: "",
     };
   }
   componentDidMount() {
     this.getData();
+    this.getDataMonth();
   }
 
-  // getDataMonth = () => {
-  //   console.log("Get Data");
-  //   axiosApiIntances
-  //     .get(`movie/month/09`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       this.setState({ data: res.data.data });
-  //     })
-  //     .catch((err) => console.log(err));
-  //   this.getData();
-  // };
   getData = () => {
-    console.log("Get Data");
+    console.log(this.props);
     axiosApiIntances
       .get(`movie`)
       .then((res) => {
         this.setState({ data: res.data.data });
       })
       .catch((err) => console.log(err));
+  };
+  getDataMonth = (numMonth) => {
+    console.log("Get Data Month");
+    axiosApiIntances
+      .get(`movie/month/${numMonth}`)
+      .then((res) => {
+        console.log(res);
+        this.setState({ data2: res.data.data });
+      })
+      .catch((err) => console.log(err));
+  };
+  handleMonth = (numMonth) => {
+    if (this.state.button !== numMonth) {
+      console.log("Nilai True");
+      this.setState({ isMonth: true, button: numMonth });
+    } else {
+      console.log("Nilai False");
+      this.setState({ isMonth: false, button: numMonth });
+    }
+
+    this.getDataMonth(numMonth);
   };
   handleImage = (event) => {
     event.preventDefault();
@@ -76,8 +117,8 @@ class Home extends Component {
     this.setState({ setModalShow: true, isUp: true });
   };
   render() {
-    console.log(this.state);
-    const { setModalShow, isUp } = this.state;
+    const { setModalShow, isUp, isMonth } = this.state;
+    console.log(isMonth);
     return (
       <>
         <Container>
@@ -107,9 +148,9 @@ class Home extends Component {
                 </div>
               </Col>
               <Col xs={6}>
-                <Link className={styles.view} onClick={this.handleModalView}>
+                <p className={styles.view} onClick={this.handleModalView}>
                   View All
-                </Link>
+                </p>
                 <ModalView
                   show={setModalShow}
                   handleClose={this.handleClose}
@@ -119,12 +160,11 @@ class Home extends Component {
                 />
               </Col>
             </Row>
-            <div className={styles.flexContainer}>
+            <Row className={styles.allMovies}>
               {this.state.data.map((item, index) => {
                 const { movie_id } = item;
                 return (
-                  // <>
-                  <div className={styles.imgAll} key={index}>
+                  <Col sm={3} className={styles.imgAll} key={index}>
                     <img
                       alt=""
                       src={Spd}
@@ -133,11 +173,10 @@ class Home extends Component {
                         this.handleMovieDetails(event, movie_id)
                       }
                     />
-                  </div>
-                  // </>
+                  </Col>
                 );
               })}
-            </div>
+            </Row>
           </Container>
           <Container className={styles.Cont2}>
             <Row>
@@ -147,9 +186,9 @@ class Home extends Component {
                 </div>
               </Col>
               <Col xs={4}>
-                <Link className={styles.view} onClick={this.handleViewAll}>
+                <p className={styles.view} onClick={this.handleViewAll}>
                   View All
-                </Link>
+                </p>
                 <ModalView
                   show={setModalShow}
                   handleClose={this.handleClose}
@@ -163,16 +202,21 @@ class Home extends Component {
               {this.state.month.map((item, index) => {
                 return (
                   <Button
-                    className={styles.btnMonth}
                     key={index}
-                    onClick={this.getData}
+                    className={styles.btnMonth}
+                    onClick={() => this.handleMonth(item.numMonth)}
                   >
-                    {item}
+                    {item.month}
                   </Button>
                 );
               })}
             </div>
-            <Cards data={this.state.data} mvDetails={this.handleMovieDetails} />
+            <Cards
+              data={this.state.data}
+              data2={this.state.data2}
+              mvDetails={this.handleMovieDetails}
+              month={isMonth}
+            />
           </Container>
           <Container className={styles.Cont3}>
             <Card className={styles.card2}>
