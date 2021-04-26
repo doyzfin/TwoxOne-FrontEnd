@@ -22,6 +22,7 @@ class App extends Component {
             exact
             component={BasicMovieDetails}
           />
+           <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
           <Route path="/movie-page/:id" exact component={Movies} />
           <Route path="/order-page" exact component={Order} />
