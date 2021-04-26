@@ -191,6 +191,7 @@
   line-height: 20px;
   letter-spacing: 0.75px;
   color: #4e4b66;
+  margin-left: 12px;
 }
 .formBottom {
   float: right;
@@ -211,17 +212,27 @@
   display: flex;
   list-style: none;
   outline: none;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 120px;
 }
 .pagination > .active > a {
-  background-color: #47ccde;
-  border-color: #47ccde;
-  color: #fff;
+  background-color: white !important;
+  border-color: #dedede;
+  color: #5f2eea;
 }
 .pagination > li > a {
-  border: 1px solid #47ccde;
+  border: 1px solid #dedede !important;
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
+  margin: 12px;
+  border-radius: 20%;
+  background-color: white !important;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
 }
 .pagination > .active > a,
 .pagination > .active > span,
@@ -229,13 +240,13 @@
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #47ccde;
+  background-color: white !important;
   border-color: #47ccde;
   outline: none;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: #47ccde;
+  color: #5f2eea !important;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span,

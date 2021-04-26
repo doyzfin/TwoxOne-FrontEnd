@@ -64,6 +64,9 @@ class Payment extends Component {
       },
     };
   }
+  handleAdmin = () => {
+    this.props.history.push("admin-page");
+  };
   selectedUser = (num) => {
     console.log(num);
     this.setState({
@@ -195,7 +198,9 @@ class Payment extends Component {
                   </Button>
                 </Col>
                 <Col sm={6}>
-                  <Button className={styles.btnPay}>Pay your Order</Button>
+                  <Button className={styles.btnPay} onClick={this.handleAdmin}>
+                    Pay your Order
+                  </Button>
                 </Col>
               </Row>
             </Col>

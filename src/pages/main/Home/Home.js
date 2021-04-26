@@ -22,6 +22,7 @@ class Home extends Component {
       isClose: false,
       isUp: false,
       isMonth: false,
+      isAdmin: false,
       month: [
         {
           numMonth: "09",

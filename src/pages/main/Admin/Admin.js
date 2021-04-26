@@ -30,6 +30,7 @@ class Order extends Component {
       id: "",
       show: false,
       setShow: false,
+      isAdmin: true,
     };
   }
   componentDidMount() {
@@ -151,7 +152,7 @@ class Order extends Component {
     return (
       <>
         <Container>
-          <NavBar />
+          <NavBar login={this.state.isLogin} admin={this.state.isAdmin} />
           <Row className={styles.mainBackground}>
             <Col>
               <h1 className={styles.mainText}>Form Movie</h1>
@@ -327,6 +328,7 @@ class Order extends Component {
               </Card>
             </Col>
           </Row>
+
           <ReactPaginate
             previousLabel={"prev"}
             nextLabel={"next"}
@@ -340,6 +342,7 @@ class Order extends Component {
             subContainerClassName={`${styles.pages}${styles.pagination}`}
             activeClassName={styles.active}
           />
+
           <Footer />
         </Container>
       </>

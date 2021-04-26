@@ -14,6 +14,7 @@ class Order extends Component {
       selectedSeat: [],
       reservedSeat: ["A1", "A7", "A14", "B1", "C1"],
       isLogin: true,
+      price: "",
     };
   }
   bookingSeat = (seat) => {
@@ -35,7 +36,8 @@ class Order extends Component {
   render() {
     const { reservedSeat, selectedSeat } = this.state;
     localStorage.setItem(`lengthTicket`, selectedSeat.length);
-    const totalPrice = "$" + selectedSeat.length * 10;
+    const totalPrice =
+      "$" + selectedSeat.length * localStorage.getItem(`price`);
 
     return (
       <>

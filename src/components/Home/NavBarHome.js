@@ -74,7 +74,9 @@ class NavBar extends Component {
                 <Modal.Title>Search Movie</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <p>H1</p>
+                {this.props.getData.map((item, index) => {
+                  return <p key={index}>{item.movie_name}</p>;
+                })}
               </Modal.Body>
               <Modal.Footer></Modal.Footer>
             </Modal>

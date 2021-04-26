@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Card, Row, Col } from "react-bootstrap";
 import spd from "../../assets/img/spd.png";
+import styles from "./ModalViewAll.module.css";
 
 class ModalView extends Component {
   componentDidMount() {}
@@ -18,7 +19,7 @@ class ModalView extends Component {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>
+            <Modal.Title className={styles.title}>
               {upComing ? "Upcoming Movies" : "All Movies"}
             </Modal.Title>
           </Modal.Header>
@@ -38,11 +39,13 @@ class ModalView extends Component {
                         src={spd}
                         onClick={(event) => this.props.mv(event, movie_id)}
                       />
-                      <Card.Title>{movie_name}</Card.Title>
-                      <Card.Body>
+                      <Card.Title className={styles.name}>
+                        {movie_name}
+                      </Card.Title>
+                      <Card.Body className={styles.bottom}>
                         {movie_category}
                         <hr />
-                        {movie_release_date}
+                        {movie_release_date.slice(0, 10)}
                       </Card.Body>
                     </Card>
                   </Col>

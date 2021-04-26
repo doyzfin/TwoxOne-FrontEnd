@@ -18,6 +18,7 @@ class Movies extends Component {
       page: 1,
       id: "",
       isLogin: true,
+      isAdmin: false,
       selectedTime: "",
       isSelect: false,
     };

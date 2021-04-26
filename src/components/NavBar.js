@@ -6,21 +6,21 @@ import {
   Modal,
   Button,
   Form,
-  Card,
   Row,
-  Col,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
-// import Logo from "../../assets/img/Tickitz1.png";
+// import Logo from "../assets/img/spd.png";
 import Search from "../assets/img/Vector.svg";
 import Profile from "../assets/img/Ellipse 11.png";
 import { withRouter } from "react-router-dom";
+// import axiosApiIntances from "../utils/axios";
 
 class NavBar extends Component {
   constructor() {
     super();
     this.state = {
+      data: {},
       isLogin: "",
       show: false,
     };
@@ -28,13 +28,15 @@ class NavBar extends Component {
   componentDidMount() {
     this.handlePP();
   }
+
   handleNavbar = (event) => {
     event.preventDefault();
     this.props.history.push("/home");
     console.log("handleNavbar");
   };
-  handleShow = () => {
+  handleShow = (event) => {
     this.setState({ show: true });
+    this.setState({ [event.target.data]: event.target.value });
   };
   handleClose = () => {
     this.setState({ show: false });
@@ -47,7 +49,7 @@ class NavBar extends Component {
   };
   render() {
     const { show } = this.state;
-    console.log(this.props);
+    console.log(this.props.admin);
     return (
       <>
         <Navbar expand="lg">
@@ -56,23 +58,44 @@ class NavBar extends Component {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="mr.auto">
-            <Nav className="mr-auto">
-              <Nav.Item>
-                <Link to="/home" className={styles.link1}>
-                  Home
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link to="/payment-page" className={styles.link1}>
-                  Payment
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link to="/profile-page" className={styles.link1}>
-                  Profile
-                </Link>
-              </Nav.Item>
-            </Nav>
+            {this.props.admin ? (
+              <Nav className="mr-auto">
+                <Nav.Item>
+                  <Link to="/home" className={styles.link1}>
+                    Dashboard
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/payment-page" className={styles.link1}>
+                    Manage Movie
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/profile-page" className={styles.link1}>
+                    Manage Schedule
+                  </Link>
+                </Nav.Item>
+              </Nav>
+            ) : (
+              <Nav className="mr-auto">
+                <Nav.Item>
+                  <Link to="/home" className={styles.link1}>
+                    Home
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/payment-page" className={styles.link1}>
+                    Payment
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/profile-page" className={styles.link1}>
+                    Profile
+                  </Link>
+                </Nav.Item>
+              </Nav>
+            )}
+
             <Nav>
               <NavDropdown
                 title="Location"
@@ -88,7 +111,7 @@ class NavBar extends Component {
               alt=""
               src={Search}
               className={styles.search}
-              onClick={this.handleShow}
+              onClick={(event) => this.handleShow(event)}
             />
             <Modal show={show} onHide={this.handleClose}>
               <Modal.Header closeButton>
@@ -99,26 +122,7 @@ class NavBar extends Component {
                   <Form.Control placeholder="Search Movie Name"></Form.Control>
                   <Button>Search</Button>
                 </Form>
-                <Row>
-                  <Col xs={4}>
-                    <Card>Card Result Search Movie</Card>
-                  </Col>
-                  <Col xs={4}>
-                    <Card>Card Result Search Movie</Card>
-                  </Col>
-                  <Col xs={4}>
-                    <Card>Card Result Search Movie</Card>
-                  </Col>
-                  <Col xs={4}>
-                    <Card>Card Result Search Movie</Card>
-                  </Col>
-                  <Col xs={4}>
-                    <Card>Card Result Search Movie</Card>
-                  </Col>
-                  <Col xs={4}>
-                    <Card>Card Result Search Movie</Card>
-                  </Col>
-                </Row>
+                <Row></Row>
               </Modal.Body>
               <Modal.Footer>© 2020 Tickitz. All Rights Reserved.</Modal.Footer>
             </Modal>

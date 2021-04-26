@@ -37,6 +37,7 @@ class Premiere extends Component {
       ],
 
       myDays: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"],
+      x: "",
     };
   }
   componentDidMount() {
@@ -46,7 +47,7 @@ class Premiere extends Component {
     axiosApiIntances
       .get(`premiere/db`)
       .then((res) => {
-        // console.log(res.data.data);
+        console.log(res.data.data);
         this.setState({ data: res.data.data });
       })
       .catch((err) => console.log(err));
@@ -55,9 +56,12 @@ class Premiere extends Component {
   handleOrder = () => {
     this.props.history.push("/order-page");
   };
+  handleSort = (event) => {
+    event.preventDefault();
+    this.setState({ [event.target.x]: event.target.value });
+  };
   render() {
-    console.log(this.props.selectStyle);
-
+    console.log(this.state.x);
     return (
       <>
         <center>
@@ -66,16 +70,37 @@ class Premiere extends Component {
             <div inline className={styles.allInput}>
               <input type="date" className={styles.date} />
               <select className={styles.city}>
-                <option>Purwokerto</option>
-                <option>Jakarta</option>
-                <option>Bogor</option>
-                <option>Bandung</option>
+                <option
+                  value="kota"
+                  onClick={(event) => this.handleSort(event)}
+                >
+                  Purwokerto
+                </option>
+                <option
+                  value="kota"
+                  onClick={(event) => this.handleSort(event)}
+                >
+                  Jakarta
+                </option>
+                <option
+                  value="kota"
+                  onClick={(event) => this.handleSort(event)}
+                >
+                  Bogor
+                </option>
+                <option
+                  value="kota"
+                  onClick={(event) => this.handleSort(event)}
+                >
+                  Bandung
+                </option>
               </select>
             </div>
           </div>
         </center>
         <Row className={styles.overRow}>
           {this.state.data.map((item, index) => {
+            console.log(item.premiere_price);
             let date = new Date();
 
             let day = date.getDate();
