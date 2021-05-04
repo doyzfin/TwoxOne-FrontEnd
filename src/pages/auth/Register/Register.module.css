@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Mulish:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
+.col1 {
+  background-image: url("../../../assets/img/image\ 1.png");
+  height: 768px;
+  padding: 0px;
+}
+.col2 {
+  padding: 8px 87px 8px 70px;
+}
+.purple {
+  background-color: rgba(43, 21, 107, 0.8);
+  width: 100%;
+  height: 100%;
+}
+.allText {
+  position: absolute;
+  padding: 60px 112px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.subText {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: 0.003em;
+  color: #ffffff;
+}
+.noteText {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.003em;
+  color: rgba(255, 255, 255, 0.8);
+}
+.mainText {
+  font-family: "Mulish", sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  margin-bottom: 80px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.subBab {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 69px;
+}
+.signText {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: 0.003em;
+  color: #121212;
+}
+.signNote {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.007em;
+  color: #aaaaaa;
+}
+.allSign {
+  margin-bottom: 49px;
+}
+.labelEmail {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+.nameEmail {
+  width: 400px;
+  height: 64px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #a0a3bd;
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 22px;
+}
+.labelPass {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+.namePass {
+  width: 400px;
+  height: 64px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #a0a3bd;
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 22px;
+}
+.namePass1 {
+  width: 400px;
+  height: 64px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #a0a3bd;
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 48px;
+}
+.eyes {
+  cursor: pointer;
+}
+.submitBtn {
+  background: #5f2eea;
+  border-radius: 16px;
+  border: 1px solid #5f2eea;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 28px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #f7f7fc;
+  margin-bottom: 32px;
+  width: 400px;
+  height: 64px;
+}
+.forgot {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.005em;
+  color: #8692a6;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.resetNow {
+  color: #5f2eea;
+}
+.nowText {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.005em;
+  color: #aaaaaa;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.allButton {
+  text-align: center;
+}
+.btnGoogle {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.005em;
+  color: #a0a3bd;
+  border: 1px solid white;
+  width: 182px;
+  height: 64px;
+  margin-right: 36px;
+}
+.btnFacebook {
+  width: 182px;
+  height: 64px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.005em;
+  color: #a0a3bd;
+  border: 1px solid white;
+}
+.imgGoogle {
+  margin-right: 22px;
+}
+.imgFacebook {
+  margin-right: 22px;
+}
+.round {
+  background-color: white;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 46px;
+}
+.number {
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.005em;
+  color: rgba(41, 3, 65, 0.5);
+  padding: 8px;
+  margin-bottom: 46px;
+}
+.text1 {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  padding-top: 8px;
+  margin-bottom: 56px;
+}
