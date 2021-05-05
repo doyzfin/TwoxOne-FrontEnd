@@ -64,11 +64,11 @@ class Register extends Component {
                     <div className={styles.round}>
                       <p className={styles.number}>1</p>
                     </div>
-                    <div className={styles.round}>
-                      <p className={styles.number}>2</p>
+                    <div className={styles.round1}>
+                      <p className={styles.number1}>2</p>
                     </div>
-                    <div className={styles.round}>
-                      <p className={styles.number}>3</p>
+                    <div className={styles.round1}>
+                      <p className={styles.number1}>3</p>
                     </div>
                   </Col>
                   <Col xs={9}>
@@ -92,6 +92,7 @@ class Register extends Component {
                 <h1 className={styles.signText}>
                   Fill your additional details
                 </h1>
+                <h1 className={styles.signText1}>Sign Up</h1>
               </div>
               <Form onSubmit={this.handleLogin}>
                 <Form.Group controlId="formBasicEmail">
@@ -147,15 +148,37 @@ class Register extends Component {
                 </p>
                 <p className={styles.nowText}>Or</p>
               </Form>
-              <div inline className={styles.allButton}>
+              <div className={styles.allButton}>
+                {/* <Row>
+                  <Col className={styles.button1}> */}
                 <Button inline className={styles.btnGoogle}>
-                  <img alt="" src={Google} className={styles.imgGoogle} />
-                  Google
+                  <Row>
+                    <Col xs={4}>
+                      <img alt="" src={Google} className={styles.imgGoogle} />
+                    </Col>
+                    <Col xs={8}>
+                      <p className={styles.ggl}>Google</p>
+                    </Col>
+                  </Row>
                 </Button>
+                {/* </Col> */}
+                {/* <Col className={styles.button2}> */}
                 <Button inline className={styles.btnFacebook}>
-                  <img alt="" src={Facebook} className={styles.imgFacebook} />
-                  Facebook
+                  <Row>
+                    <Col xs={4}>
+                      <img
+                        alt=""
+                        src={Facebook}
+                        className={styles.imgFacebook}
+                      />
+                    </Col>
+                    <Col xs={8}>
+                      <p className={styles.fcbk}>Facebook</p>
+                    </Col>
+                  </Row>
                 </Button>
+                {/* </Col>
+                </Row> */}
               </div>
             </Col>
           </Row>

@@ -2,6 +2,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Mulish:wght@900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
+@media (max-width: 512px) {
+  .col1 {
+    display: none;
+  }
+  .col2 {
+    padding: 10px !important;
+  }
+  .ggl {
+    display: none;
+  }
+  .fcbk {
+    display: none;
+  }
+  .btnGoogle {
+    width: 55px !important;
+    margin-right: 55px;
+  }
+  .imgGoogle {
+    padding: 5px !important;
+  }
+  .btnFacebook {
+    width: 55px !important;
+  }
+  .imgFacebook {
+    padding: 5px !important;
+  }
+  .button1 {
+    padding: 0px !important;
+    width: 120px !important;
+  }
+  .button2 {
+    padding: 0px !important;
+  }
+  .signText {
+    display: none;
+  }
+  .signText1 {
+    display: inline-block !important;
+  }
+}
 .col1 {
   background-image: url("../../../assets/img/image\ 1.png");
   height: 768px;
@@ -64,6 +104,16 @@
   line-height: 58px;
   letter-spacing: 0.003em;
   color: #121212;
+}
+.signText1 {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: 0.003em;
+  color: #121212;
+  display: none;
 }
 .signNote {
   font-family: "Inter", sans-serif;
@@ -198,13 +248,12 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 23px;
-  text-align: center;
   letter-spacing: 0.005em;
   color: #a0a3bd;
   border: 1px solid white;
   width: 182px;
   height: 64px;
-  margin-right: 36px;
+  /* margin-right: 36px; */
 }
 .btnFacebook {
   width: 182px;
@@ -223,13 +272,28 @@
   border: 1px solid white;
 }
 .imgGoogle {
-  margin-right: 22px;
+  padding-top: 8px;
+}
+.ggl {
+  padding-top: 8px;
+  text-align: left;
 }
 .imgFacebook {
-  margin-right: 22px;
+  padding-top: 8px;
+}
+.fcbk {
+  padding-top: 8px;
+  text-align: left;
 }
 .round {
   background-color: white;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 46px;
+}
+.round1 {
+  border: 3px solid white;
   border-radius: 100%;
   width: 50px;
   height: 50px;
@@ -246,6 +310,20 @@
   line-height: 30px;
   letter-spacing: 0.005em;
   color: rgba(41, 3, 65, 0.5);
+  padding: 8px;
+  margin-bottom: 46px;
+}
+.number1 {
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.005em;
+  color: white;
   padding: 8px;
   margin-bottom: 46px;
 }

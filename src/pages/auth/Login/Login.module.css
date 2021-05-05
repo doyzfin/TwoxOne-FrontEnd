@@ -2,6 +2,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Mulish:wght@900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
+@media (max-width: 512px) {
+  .col1 {
+    display: none;
+  }
+  .col2 {
+    padding: 30px !important;
+    padding-top: 25px !important;
+  }
+  .ggl {
+    display: none;
+  }
+  .fcbk {
+    display: none;
+  }
+  .btnGoogle {
+    width: 55px !important;
+    margin-right: 55px;
+  }
+  .imgGoogle {
+    padding: 5px !important;
+  }
+  .btnFacebook {
+    width: 55px !important;
+  }
+  .imgFacebook {
+    padding: 5px !important;
+  }
+  .button1 {
+    padding: 0px !important;
+    width: 120px !important;
+  }
+  .button2 {
+    padding: 0px !important;
+  }
+  .signText {
+    font-size: 29px !important;
+  }
+  .signNote {
+    display: none;
+  }
+  .nameEmail {
+    width: 350px !important;
+  }
+  .namePass {
+    width: 350px !important;
+  }
+  .submitBtn {
+    width: 350px !important;
+  }
+}
 .col1 {
   background-image: url("../../../assets/img/image\ 1.png");
   height: 768px;

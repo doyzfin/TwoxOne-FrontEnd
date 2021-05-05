@@ -104,15 +104,37 @@ class Login extends Component {
                 </p>
                 <p className={styles.nowText}>Or</p>
               </Form>
-              <div inline className={styles.allButton}>
+              <div className={styles.allButton}>
+                {/* <Row>
+                  <Col className={styles.button1}> */}
                 <Button inline className={styles.btnGoogle}>
-                  <img alt="" src={Google} className={styles.imgGoogle} />
-                  Google
+                  <Row>
+                    <Col xs={4}>
+                      <img alt="" src={Google} className={styles.imgGoogle} />
+                    </Col>
+                    <Col xs={8}>
+                      <p className={styles.ggl}>Google</p>
+                    </Col>
+                  </Row>
                 </Button>
+                {/* </Col> */}
+                {/* <Col className={styles.button2}> */}
                 <Button inline className={styles.btnFacebook}>
-                  <img alt="" src={Facebook} className={styles.imgFacebook} />
-                  Facebook
+                  <Row>
+                    <Col xs={4}>
+                      <img
+                        alt=""
+                        src={Facebook}
+                        className={styles.imgFacebook}
+                      />
+                    </Col>
+                    <Col xs={8}>
+                      <p className={styles.fcbk}>Facebook</p>
+                    </Col>
+                  </Row>
                 </Button>
+                {/* </Col>
+                </Row> */}
               </div>
             </Col>
           </Row>
