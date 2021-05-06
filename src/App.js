@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
+import PrivateRoute from "./helpers/PrivateRoute";
+import PublicRoute from "./helpers/PublicRoute";
+
 import BasicReact from "./pages/learning/BasicReact/BasicReact";
 import BasicHome from "./pages/learning/HomePage/Home";
 import BasicMovieDetails from "./pages/learning/Movie Details/MovieDetails";
@@ -24,17 +27,30 @@ class App extends Component {
         <Router>
           <Switch>
             {/* <Route path="/login" exact component={Login} /> */}
-            <Route path="/learning/basic-react" exact component={BasicReact} />
+            <PublicRoute
+              path="/learning/basic-react"
+              exact
+              component={BasicReact}
+            />
             <Route path="/learning/basic-redux" exact component={BasicRedux} />
-            <Route path="/learning/basic-home" exact component={BasicHome} />
+            <PrivateRoute
+              path="/learning/basic-home"
+              exact
+              component={BasicHome}
+            />
             <Route
               path="/learning/basic-movie-details/:id"
               exact
               component={BasicMovieDetails}
             />
             <Route path="/" exact component={Register} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/home" exact component={Home} />
+            <PublicRoute
+              restricted={true}
+              path="/login"
+              exact
+              component={Login}
+            />
+            <PublicRoute path="/home" exact component={Home} />
             <Route path="/movie-page/:id" exact component={Movies} />
             <Route path="/order-page" exact component={Order} />
             <Route path="/payment-page" exact component={Payment} />

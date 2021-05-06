@@ -14,6 +14,7 @@ class Home extends Component {
         movieName: "",
         movieCategory: "",
         movieReleaseDate: "",
+        movieImage: null,
       },
       data: [],
       pagination: {},
@@ -60,10 +61,23 @@ class Home extends Component {
       },
     });
   };
+  handleImage = (event) => {
+    this.setState({
+      form: { ...this.state.form, movieImage: event.target.files[0] },
+    });
+  };
   submitData = (event) => {
     event.preventDefault();
     console.log("Save Data");
-    console.log(this.state.form);
+    // console.log(this.state.form);
+    const formData = new FormData();
+    formData.append("movieName", this.state.form.movieName);
+    formData.append("movieCategory", this.state.form.movieCategory);
+    formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
+    formData.append("movieImage", this.state.form.movieImage);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
   };
   setUpdate = (data) => {
     console.log(data);
@@ -97,6 +111,7 @@ class Home extends Component {
       this.getData();
     });
   };
+
   render() {
     console.log(this.state);
     const { totalPage } = this.state.pagination;
@@ -139,6 +154,13 @@ class Home extends Component {
                   name="movieReleaseDate"
                   value={movieReleaseDate}
                   onChange={(event) => this.changeText(event)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Movie Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={(event) => this.handleImage(event)}
                 />
               </Form.Group>
               <Button variant="primary" type="reset">
