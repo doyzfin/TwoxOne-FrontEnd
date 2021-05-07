@@ -9,6 +9,9 @@ import Footer from "../../../components/Footer";
 import HomeImg from "../../../assets/img/Group 15.png";
 import Line from "../../../assets/img/Line 7.png";
 import Spd from "../../../assets/img/spd.png";
+import { connect } from "react-redux";
+import { logout } from "../../../redux/actions/auth";
+import { getAllMovie } from "../../../redux/actions/movie";
 
 class Home extends Component {
   constructor(props) {
@@ -71,13 +74,16 @@ class Home extends Component {
   }
 
   getData = () => {
-    console.log(this.props);
-    axiosApiIntances
-      .get(`movie`)
-      .then((res) => {
-        this.setState({ data: res.data.data });
-      })
-      .catch((err) => console.log(err));
+    this.props.getAllMovie().then((res) => {
+      this.setState({ data: res.value.data.data });
+    });
+    // console.log(this.props);
+    // axiosApiIntances
+    //   .get(`movie`)
+    //   .then((res) => {
+    //     this.setState({ data: res.data.data });
+    //   })
+    //   .catch((err) => console.log(err));
   };
   getDataMonth = (numMonth) => {
     console.log("Get Data Month");
@@ -117,13 +123,18 @@ class Home extends Component {
   handleViewAll = () => {
     this.setState({ setModalShow: true, isUp: true });
   };
+  handleLogout = () => {
+    this.props.logout();
+    localStorage.removeItem("token");
+    this.props.history.push("/login");
+  };
   render() {
     const { setModalShow, isUp, isMonth } = this.state;
-    console.log(isMonth);
+    console.log(this.props.movie);
     return (
       <>
         <Container>
-          <NavBar login={this.state.isLogin} />
+          <NavBar login={this.state.isLogin} handleLogout={this.handleLogout} />
           <Container>
             <Row>
               <Col sm={6}>
@@ -162,7 +173,7 @@ class Home extends Component {
               </Col>
             </Row>
             <Row className={styles.allMovies}>
-              {this.state.data.map((item, index) => {
+              {this.props.movie.data.map((item, index) => {
                 const { movie_id } = item;
                 return (
                   <Col sm={3} className={styles.imgAll} key={index}>
@@ -249,4 +260,11 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  movie: state.movie,
+});
+
+const mapDispatchToProps = { logout, getAllMovie };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

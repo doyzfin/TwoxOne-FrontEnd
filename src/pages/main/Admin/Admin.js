@@ -5,10 +5,17 @@ import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
 import styles from "./Admin.module.css";
 import Spd from "../../../assets/img/spd.png";
 import Cards from "../../../components/Admin/Card";
-import axiosApiIntances from "../../../utils/axios";
+// import axiosApiIntances from "../../../utils/axios";
 import ReactPaginate from "react-paginate";
+import { connect } from "react-redux";
+import {
+  getAllMovie,
+  postMovie,
+  deleteMovie,
+  updateMovie,
+} from "../../../redux/actions/movie";
 
-class Order extends Component {
+class Admin extends Component {
   constructor() {
     super();
     this.state = {
@@ -18,8 +25,9 @@ class Order extends Component {
         movieDirector: "",
         movieCast: "",
         movieReleaseDate: "",
-        movieHour: "",
-        movieMinute: "",
+        movieDuration: "",
+        movieImage: null,
+        movieSynopsis: "",
       },
       data: [],
       isUpdate: false,
@@ -42,22 +50,28 @@ class Order extends Component {
   getData = () => {
     const { page, limit } = this.state;
 
-    this.setState({ isLoading: true });
-    axiosApiIntances
-      .get(`movie?page=${page}&limit=${limit}`)
-      .then((res) => {
-        this.setState({ data: res.data.data, pagination: res.data.pagination });
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setTimeout(() => {
-          this.setState({ isLoading: false });
-        }, 1000);
-      });
+    // this.setState({ isLoading: true });
+    // axiosApiIntances
+    //   .get(`movie?page=${page}&limit=${limit}`)
+    //   .then((res) => {
+    //     this.setState({ data: res.data.data, pagination: res.data.pagination });
+    //   })
+    //   .catch((err) => console.log(err))
+    //   .finally(() => {
+    //     setTimeout(() => {
+    //       this.setState({ isLoading: false });
+    //     }, 1000);
+    //   });
+    this.props.getAllMovie(page, limit);
   };
   updateForm = (event) => {
     this.setState({
       form: { ...this.state.form, [event.target.name]: event.target.value },
+    });
+  };
+  handleImage = (event) => {
+    this.setState({
+      form: { ...this.state.form, movieImage: event.target.files[0] },
     });
   };
   resetData = (event) => {
@@ -71,29 +85,45 @@ class Order extends Component {
         movieReleaseDate: "",
         movieDuration: "",
         movieSynopsis: "",
+        movieImage: null,
       },
     });
   };
   updateData = (event) => {
-    const { id, form } = this.state;
-    console.log(form);
+    const { id } = this.state;
+    console.log(id);
     event.preventDefault();
+    const formData = new FormData(); // FORM DATA digunakan untuk menghandle inputan yang memiliki file upload didalamnya
+    formData.append("movieName", this.state.form.movieName);
+    formData.append("movieDirector", this.state.form.movieDirector);
+    formData.append("movieCast", this.state.form.movieCast);
+    formData.append("movieDuration", this.state.form.movieDuration);
+    formData.append("movieSynopsis", this.state.form.movieSynopsis);
+    formData.append("movieImage", this.state.form.movieImage);
+    formData.append("movieCategory", this.state.form.movieCategory);
+    formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
     this.setState({ isUpdate: false });
-    axiosApiIntances
-      .patch(`movie/${id}`, form)
-      .then((res) => {
-        this.getData();
-        this.resetData(event);
-      })
-      .catch((err) => console.log(err));
+    this.props.updateMovie(id, formData).then((res) => {
+      alert("Success Update");
+      this.props.getAllMovie();
+      this.resetData(event);
+    });
+    // axiosApiIntances
+    //   .patch(`movie/${id}`, form)
+    //   .then((res) => {
+    //     this.getData();
+    //     this.resetData(event);
+    //   })
+    //   .catch((err) => console.log(err));
   };
   setUpdate = (data) => {
-    console.log(data);
+    // console.log(data);
     this.setState({
       isUpdate: true,
       id: data.movie_id,
       form: {
         movieName: data.movie_name,
+        movieDirector: data.movie_director,
         movieCategory: data.movie_category,
         movieReleaseDate: data.movie_release_date.slice(0, 10),
         movieCast: data.movie_cast,
@@ -103,26 +133,46 @@ class Order extends Component {
     });
   };
   deleteData = (id) => {
-    axiosApiIntances
-      .delete(`movie/${id}`)
-      .then((res) => {
-        this.getData();
-      })
-      .catch((err) => console.log(err));
+    this.props.deleteMovie(id).then((res) => {
+      this.props.getAllMovie();
+      alert("Success DELETE");
+    });
+    // axiosApiIntances
+    //   .delete(`movie/${id}`)
+    //   .then((res) => {
+    //     this.getData();
+    //   })
+    //   .catch((err) => console.log(err));
   };
   submitData = (event) => {
     event.preventDefault();
-
-    const { form } = this.state;
-    axiosApiIntances
-      .post(`movie/`, form)
-      .then((res) => {
-        this.getData();
-        this.resetData();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const formData = new FormData(); // FORM DATA digunakan untuk menghandle inputan yang memiliki file upload didalamnya
+    formData.append("movieName", this.state.form.movieName);
+    formData.append("movieDirector", this.state.form.movieDirector);
+    formData.append("movieCast", this.state.form.movieCast);
+    formData.append("movieDuration", this.state.form.movieDuration);
+    formData.append("movieSynopsis", this.state.form.movieSynopsis);
+    formData.append("movieImage", this.state.form.movieImage);
+    formData.append("movieCategory", this.state.form.movieCategory);
+    formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
+    // for (var pair of formData.entries()) {
+    //   console.log(pair[0] + ", " + pair[1]);
+    // }
+    // const { form } = this.state;
+    // axiosApiIntances
+    //   .post(`movie/`, form)
+    //   .then((res) => {
+    //     this.getData();
+    //     this.resetData();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    this.props.postMovie(formData).then((res) => {
+      this.props.getAllMovie();
+      this.resetData(event);
+      alert("Success Post Movie");
+    });
   };
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -147,8 +197,10 @@ class Order extends Component {
       movieSynopsis,
     } = this.state.form;
     const { isUpdate, show } = this.state;
-    const { totalPage } = this.state.pagination;
-    console.log(this.state);
+    const { totalPage } = this.props.movie.pagination;
+    // const { isLoading } = this.props.movie;
+    // const { totalPage } = this.props.movie.pagination;
+    console.log(this.props);
     return (
       <>
         <Container>
@@ -254,6 +306,21 @@ class Order extends Component {
                             </Form.Group>
                           </Form.Group>
                         </Form.Row>
+                        <center>
+                          <Form.Row>
+                            <Form.Group as={Col}>
+                              <Form.Label className={styles.labelForm1}>
+                                Movie Image
+                              </Form.Label>
+                              <Form.Control
+                                type="file"
+                                className={styles.controlFormImg}
+                                onChange={(event) => this.handleImage(event)}
+                                required
+                              />
+                            </Form.Group>
+                          </Form.Row>
+                        </center>
                         <Form.Row>
                           <Form.Group as={Col}>
                             <Form.Label className={styles.labelForm1}>
@@ -269,6 +336,7 @@ class Order extends Component {
                             />
                           </Form.Group>
                         </Form.Row>
+
                         <div className={styles.btnRight}>
                           <Button className={styles.btnReset} type="reset">
                             Reset
@@ -308,7 +376,7 @@ class Order extends Component {
               </Row>
               <Card className={styles.mainCardBottom}>
                 <Row className={styles.overRow}>
-                  {this.state.data.map((item, index) => {
+                  {this.props.movie.data.map((item, index) => {
                     return (
                       <Col sm={3} key={index}>
                         <Cards
@@ -350,4 +418,11 @@ class Order extends Component {
   }
 }
 
-export default Order;
+const mapStateToProps = (state) => ({
+  movie: state.movie,
+  auth: state.auth,
+});
+
+const mapDispatchToProps = { getAllMovie, postMovie, deleteMovie, updateMovie };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);

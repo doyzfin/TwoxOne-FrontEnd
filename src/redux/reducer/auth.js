@@ -51,6 +51,14 @@ const auth = (state = initialState, action) => {
         data: {},
         msg: action.payload.response.data.msg,
       };
+    case "LOGOUT":
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: {},
+        msg: "",
+      };
     default:
       return state;
   }

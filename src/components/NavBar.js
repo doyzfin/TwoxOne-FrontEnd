@@ -12,9 +12,11 @@ import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 // import Logo from "../assets/img/spd.png";
 import Search from "../assets/img/Vector.svg";
-import Profile from "../assets/img/Ellipse 11.png";
+// import Profile from "../assets/img/Ellipse 11.png";
 import { withRouter } from "react-router-dom";
 // import axiosApiIntances from "../utils/axios";
+
+// import { logout } from "../redux/actions/auth";
 
 class NavBar extends Component {
   constructor() {
@@ -43,9 +45,14 @@ class NavBar extends Component {
   };
 
   handlePP = () => {
-    const { login } = this.props;
-
-    this.setState({ isLogin: login });
+    // const { login } = this.props;
+    // localStorage.clear();
+    // localStorage.setItem("token", this.props.auth.data.token);
+    // this.setState({ isLogin: login });
+    // if (!localStorage.getItem("token")) {
+    //   this.props.history.push("/login");
+    // }
+    // this.props.history.push("/login");
   };
   render() {
     const { show } = this.state;
@@ -66,12 +73,12 @@ class NavBar extends Component {
                   </Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to="/payment-page" className={styles.link1}>
+                  <Link to="/manage-schedule" className={styles.link1}>
                     Manage Movie
                   </Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to="/profile-page" className={styles.link1}>
+                  <Link to="/manage-schedule" className={styles.link1}>
                     Manage Schedule
                   </Link>
                 </Nav.Item>
@@ -126,13 +133,16 @@ class NavBar extends Component {
               </Modal.Body>
               <Modal.Footer>© 2020 Tickitz. All Rights Reserved.</Modal.Footer>
             </Modal>
-            {this.state.isLogin ? (
+            {/* {this.state.isLogin ? (
               <img alt="" src={Profile} className={styles.pp} />
             ) : (
-              <Button className={styles.btn} onClick={this.handlePP}>
-                Sign Up
-              </Button>
-            )}
+              // <Button className={styles.btn} onClick={this.handlePP}>
+              //   Log Out
+              // </Button>
+            )} */}
+            <Button className={styles.btn} onClick={this.props.handleLogout}>
+              Logout
+            </Button>
           </Navbar.Collapse>
         </Navbar>
       </>

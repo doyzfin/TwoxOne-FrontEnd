@@ -8,7 +8,7 @@ class ModalView extends Component {
 
   render() {
     const { show, handleClose, upComing } = this.props;
-    console.log(this.props);
+    console.log(this.props.getData);
     return (
       <>
         <Modal

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Card } from "react-bootstrap";
-import Spd from "../../assets/img/spd.png";
+// import Spd from "../../assets/img/spd.png";
 import styles from "./Card.module.css";
 import { withRouter } from "react-router-dom";
 
@@ -10,6 +10,7 @@ class Cards extends Component {
       movie_name,
       movie_category,
       movie_id,
+      movie_image,
       movie_release_date,
     } = this.props.data;
     const { handleUpdate, handleDelete, data, mvHandle } = this.props;
@@ -18,7 +19,7 @@ class Cards extends Component {
       <>
         <Card className={styles.cardBottom}>
           <Card.Img
-            src={Spd}
+            src={movie_image}
             variant="top"
             className={styles.imgCard}
             onClick={() => mvHandle(movie_id)}

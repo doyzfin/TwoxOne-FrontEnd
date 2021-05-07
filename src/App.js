@@ -19,6 +19,7 @@ import View from "./pages/main/Movies/ViewAll";
 import BasicRedux from "./pages/learning/BasicRedux/BasicRedux";
 import Login from "./pages/auth/Login/Login";
 import Register from "./pages/auth/Register/Register";
+import Schedule from "./pages/main/Admin/ManageSchedule";
 
 class App extends Component {
   render() {
@@ -43,18 +44,24 @@ class App extends Component {
               exact
               component={BasicMovieDetails}
             />
-            <Route path="/" exact component={Register} />
+            <PublicRoute
+              restricted={true}
+              path="/"
+              exact
+              component={Register}
+            />
             <PublicRoute
               restricted={true}
               path="/login"
               exact
               component={Login}
             />
-            <PublicRoute path="/home" exact component={Home} />
+            <PrivateRoute path="/home" exact component={Home} />
             <Route path="/movie-page/:id" exact component={Movies} />
             <Route path="/order-page" exact component={Order} />
             <Route path="/payment-page" exact component={Payment} />
             <Route path="/admin-page" exact component={Admin} />
+            <Route path="/manage-schedule" exact component={Schedule} />
             <Route path="/view" exact component={View} />
           </Switch>
         </Router>

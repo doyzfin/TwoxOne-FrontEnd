@@ -54,7 +54,9 @@ class Movies extends Component {
   };
 
   render() {
+    console.log(this.state.data);
     const {
+      movie_id,
       movie_name,
       movie_category,
       movie_release_date,
@@ -111,6 +113,7 @@ class Movies extends Component {
             <Premiere
               selectUser={this.selectedUser.bind(this)}
               selectStyle={this.state.isSelect}
+              movieId={movie_id}
             />
           </Container>
           <Footer />

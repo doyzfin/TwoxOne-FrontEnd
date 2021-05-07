@@ -41,13 +41,15 @@ class Premiere extends Component {
     };
   }
   componentDidMount() {
-    this.getDataPremiere();
+    const { id } = this.props.match.params;
+    console.log(this.props);
+    this.getDataPremiere(id);
   }
-  getDataPremiere = () => {
+  getDataPremiere = (id) => {
     axiosApiIntances
-      .get(`premiere/db`)
+      .get(`premiere/db/${id}`)
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res);
         this.setState({ data: res.data.data });
       })
       .catch((err) => console.log(err));

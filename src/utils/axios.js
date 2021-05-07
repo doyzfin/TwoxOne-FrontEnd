@@ -28,14 +28,11 @@ axiosApiIntances.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    if (error.response.status === 403) {
-      alert("Please Login Again !");
-      localStorage.clear();
-      window.location.href = "/login";
-    } else if (error.response.status === 401) {
-      alert("Email is Registered , You Can Login !");
-      window.location.href = "/login";
-    }
+    // if (error.response.status === 403) {
+    //   alert("Please Login Again !");
+    //   localStorage.clear();
+    //   window.location.href = "/login";
+    // }
     return Promise.reject(error);
   }
 );
