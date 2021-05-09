@@ -3,7 +3,7 @@ import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
 import styles from "./Admin.module.css";
-import Spd from "../../../assets/img/spd.png";
+// import Spd from "../../../assets/img/spd.png";
 import Cards from "../../../components/Admin/Card";
 // import axiosApiIntances from "../../../utils/axios";
 import ReactPaginate from "react-paginate";
@@ -62,7 +62,9 @@ class Admin extends Component {
     //       this.setState({ isLoading: false });
     //     }, 1000);
     //   });
-    this.props.getAllMovie(page, limit);
+    this.props.getAllMovie(page, limit).then((res) => {
+      this.setState({ data: res.action.payload.data.data });
+    });
   };
   updateForm = (event) => {
     this.setState({
@@ -105,6 +107,7 @@ class Admin extends Component {
     this.setState({ isUpdate: false });
     this.props.updateMovie(id, formData).then((res) => {
       alert("Success Update");
+      console.log(res);
       this.props.getAllMovie();
       this.resetData(event);
     });
@@ -129,6 +132,7 @@ class Admin extends Component {
         movieCast: data.movie_cast,
         movieDuration: data.movie_duration,
         movieSynopsis: data.movie_synopsis,
+        movieImage: this.state.data[0].movie_image,
       },
     });
   };
@@ -200,7 +204,7 @@ class Admin extends Component {
     const { totalPage } = this.props.movie.pagination;
     // const { isLoading } = this.props.movie;
     // const { totalPage } = this.props.movie.pagination;
-    console.log(this.props);
+    console.log(this.state.data[0]);
     return (
       <>
         <Container>
@@ -213,7 +217,9 @@ class Admin extends Component {
                   <Row>
                     <Col sm={3}>
                       <Card className={styles.cardImg}>
-                        <Card.Img src={Spd} />
+                        <Card.Img
+                          src={`http://localhost:3001/api/${this.state.data.movie_image}`}
+                        />
                       </Card>
                     </Col>
                     <Col sm={9}>

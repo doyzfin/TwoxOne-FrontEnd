@@ -174,12 +174,12 @@ class Home extends Component {
             </Row>
             <Row className={styles.allMovies}>
               {this.props.movie.data.map((item, index) => {
-                const { movie_id } = item;
+                const { movie_id, movie_image } = item;
                 return (
                   <Col sm={3} className={styles.imgAll} key={index}>
                     <img
                       alt=""
-                      src={Spd}
+                      src={`http://localhost:3001/api/${movie_image}`}
                       className={styles.imgClick}
                       onClick={(event) =>
                         this.handleMovieDetails(event, movie_id)

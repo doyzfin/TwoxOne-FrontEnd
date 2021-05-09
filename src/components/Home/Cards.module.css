@@ -56,6 +56,8 @@
   justify-content: center;
   text-align: center;
   margin: 0 auto;
+  width: 159px;
+  height: 244px;
 }
 .title {
   font-family: "Mulish", sans-serif;

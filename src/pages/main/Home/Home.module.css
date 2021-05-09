@@ -234,4 +234,6 @@
 }
 .imgClick {
   cursor: pointer;
+  width: 159px;
+  height: 244px;
 }

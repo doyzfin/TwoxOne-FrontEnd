@@ -64,6 +64,7 @@ class Movies extends Component {
       movie_director,
       movie_cast,
       movie_synopsis,
+      movie_image,
     } = this.state.data;
     localStorage.setItem(`timeBook`, this.state.selectedTime);
 
@@ -75,7 +76,10 @@ class Movies extends Component {
             <Row>
               <Col sm={4}>
                 <Card className={styles.cardImg}>
-                  <Card.Img src={Img} className={styles.imgMain} />
+                  <Card.Img
+                    src={`http://localhost:3001/api/${movie_image}`}
+                    className={styles.imgMain}
+                  />
                 </Card>
               </Col>
               <Col sm={8}>

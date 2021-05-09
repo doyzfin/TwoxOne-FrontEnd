@@ -15,7 +15,9 @@ import Search from "../assets/img/Vector.svg";
 // import Profile from "../assets/img/Ellipse 11.png";
 import { withRouter } from "react-router-dom";
 // import axiosApiIntances from "../utils/axios";
-
+import { connect } from "react-redux";
+import { getDataUserAll } from "../redux/actions/profile";
+import { login } from "../redux/actions/auth";
 // import { logout } from "../redux/actions/auth";
 
 class NavBar extends Component {
@@ -29,6 +31,7 @@ class NavBar extends Component {
   }
   componentDidMount() {
     this.handlePP();
+    this.props.getDataUserAll();
   }
 
   handleNavbar = (event) => {
@@ -43,6 +46,9 @@ class NavBar extends Component {
   handleClose = () => {
     this.setState({ show: false });
   };
+  getUserDataId = () => {
+    this.props.getUserData();
+  };
 
   handlePP = () => {
     // const { login } = this.props;
@@ -56,7 +62,7 @@ class NavBar extends Component {
   };
   render() {
     const { show } = this.state;
-    console.log(this.props.admin);
+    console.log(this.props.auth);
     return (
       <>
         <Navbar expand="lg">
@@ -96,7 +102,10 @@ class NavBar extends Component {
                   </Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to="/profile-page" className={styles.link1}>
+                  <Link
+                    to={`profile-page/${localStorage.getItem("userId")}`}
+                    className={styles.link1}
+                  >
                     Profile
                   </Link>
                 </Nav.Item>
@@ -149,5 +158,11 @@ class NavBar extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  user: state.user,
+  auth: state.auth,
+});
 
-export default withRouter(NavBar);
+const mapDispatchToProps = { getDataUserAll, login };
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar));

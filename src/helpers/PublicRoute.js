@@ -21,6 +21,15 @@ const PublicRoute = ({ component: Component, restricted, ...rest }) => {
       <Route
         {...rest}
         render={(props) =>
+          // {
+          //   if (isAuthenticated && restricted) {
+          //     <Redirect to="/home" />;
+          //   } else if (!isAuthenticated) {
+          //     <Redirect to="/login" />;
+          //   } else {
+          //     <Component {...props} />;
+          //   }
+          // }
           isAuthenticated && restricted ? (
             <Redirect to="/home" />
           ) : (

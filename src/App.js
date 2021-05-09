@@ -15,11 +15,13 @@ import Movies from "./pages/main/Movies/MoviesPage";
 import Order from "./pages/main/Order/OrderPage";
 import Payment from "./pages/main/Payments/Payments";
 import Admin from "./pages/main/Admin/Admin";
-import View from "./pages/main/Movies/ViewAll";
+import Profile from "./pages/main/Profile/Profile";
+import Profile2 from "./pages/main/Profile/Profile2";
 import BasicRedux from "./pages/learning/BasicRedux/BasicRedux";
 import Login from "./pages/auth/Login/Login";
 import Register from "./pages/auth/Register/Register";
 import Schedule from "./pages/main/Admin/ManageSchedule";
+import Dashboard from "./pages/main/Admin/Dashboard";
 
 class App extends Component {
   render() {
@@ -62,7 +64,13 @@ class App extends Component {
             <Route path="/payment-page" exact component={Payment} />
             <Route path="/admin-page" exact component={Admin} />
             <Route path="/manage-schedule" exact component={Schedule} />
-            <Route path="/view" exact component={View} />
+            <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/profile-page/:id" exact component={Profile} />
+            <Route
+              path="/profile-page/history-user/:id"
+              exact
+              component={Profile2}
+            />
           </Switch>
         </Router>
       </Provider>

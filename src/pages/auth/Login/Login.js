@@ -36,7 +36,12 @@ class Login extends Component {
       // [2]
       console.log(this.props.auth.data.token);
       localStorage.setItem("token", this.props.auth.data.token);
-      this.props.history.push("/home");
+      localStorage.setItem("userId", this.props.auth.data.user_id);
+      if (this.props.auth.data.length > 0) {
+        alert(`${this.props.auth.msg}`);
+      } else {
+        this.props.history.push("/home");
+      }
     });
   };
   handlePass = () => {

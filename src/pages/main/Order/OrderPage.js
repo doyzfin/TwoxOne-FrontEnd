@@ -12,7 +12,7 @@ class Order extends Component {
     super();
     this.state = {
       selectedSeat: [],
-      reservedSeat: ["A1", "A7", "A14", "B1", "C1"],
+      reservedSeat: [],
       isLogin: true,
       price: "",
     };

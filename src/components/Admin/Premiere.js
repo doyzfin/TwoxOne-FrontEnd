@@ -6,6 +6,8 @@ import axiosApiIntances from "../../utils/axios";
 // import Sponsor2 from "../../assets/img/2.png";
 // import Sponsor3 from "../../assets/img/3.png";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteSchedule } from "../../redux/actions/admin";
 
 class Premiere extends Component {
   constructor() {
@@ -41,20 +43,23 @@ class Premiere extends Component {
     };
   }
   componentDidMount() {
-    const { id } = this.props.match.params;
-    console.log(this.props);
-    this.getDataPremiere(id);
+    this.getDataPremiere();
   }
-  getDataPremiere = (id) => {
+  getDataPremiere = () => {
     axiosApiIntances
-      .get(`premiere/db/${id}`)
+      .get("premiere/db")
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         this.setState({ data: res.data.data });
       })
       .catch((err) => console.log(err));
   };
-
+  handleDelete = (id) => {
+    this.props.deleteSchedule(id).then((res) => {
+      alert("Success Delete");
+      this.getDataPremiere();
+    });
+  };
   handleOrder = () => {
     this.props.history.push("/order-page");
   };
@@ -66,43 +71,9 @@ class Premiere extends Component {
     console.log(this.state.x);
     return (
       <>
-        <center>
-          <div className={styles.upper}>
-            <h1 className={styles.show}>Showtimes and Ticket</h1>
-            <div inline className={styles.allInput}>
-              <input type="date" className={styles.date} />
-              <select className={styles.city}>
-                <option
-                  value="kota"
-                  onClick={(event) => this.handleSort(event)}
-                >
-                  Purwokerto
-                </option>
-                <option
-                  value="kota"
-                  onClick={(event) => this.handleSort(event)}
-                >
-                  Jakarta
-                </option>
-                <option
-                  value="kota"
-                  onClick={(event) => this.handleSort(event)}
-                >
-                  Bogor
-                </option>
-                <option
-                  value="kota"
-                  onClick={(event) => this.handleSort(event)}
-                >
-                  Bandung
-                </option>
-              </select>
-            </div>
-          </div>
-        </center>
         <Row className={styles.overRow}>
           {this.state.data.map((item, index) => {
-            console.log(item.location_address);
+            console.log(item.premiere_id);
             let date = new Date();
 
             let day = date.getDate();
@@ -197,13 +168,28 @@ class Premiere extends Component {
                         )}
                       </Col>
                     </Row>
-                    <Button
-                      block
-                      className={styles.btnBook}
-                      onClick={this.handleOrder}
-                    >
-                      Book Now
-                    </Button>
+                    <Row>
+                      <Col sm={6}>
+                        <Button
+                          block
+                          variant="outline-primary"
+                          className={styles.btnUpdt}
+                          // onClick={() => handleUpdate(data)}
+                        >
+                          Update
+                        </Button>
+                      </Col>
+                      <Col sm={6}>
+                        <Button
+                          block
+                          variant="outline-primary"
+                          className={styles.btnDlt}
+                          onClick={() => this.handleDelete(item.premiere_id)}
+                        >
+                          Delete
+                        </Button>
+                      </Col>
+                    </Row>
                   </Card.Body>
                 </Card>
               </Col>
@@ -215,4 +201,6 @@ class Premiere extends Component {
   }
 }
 
-export default withRouter(Premiere);
+const mapDispatchToProps = { deleteSchedule };
+
+export default connect(null, mapDispatchToProps)(withRouter(Premiere));

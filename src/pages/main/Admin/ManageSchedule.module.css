@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+.title {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+  color: #000000;
+  margin-bottom: 33px;
+  margin-top: 56px;
+}
+.cardImg {
+  background: #ffffff;
+  border: 0.5px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  width: 249px;
+  height: 344px;
+}
+.label {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  color: #4e4b66;
+}
+.control {
+  height: 64px;
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+.control1 {
+  height: 64px;
+  width: 170px;
+  background: #fcfdfe;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+.cardUp {
+  padding: 49px 40px;
+  background: #ffffff;
+  border-radius: 24px;
+}
+.cardBottom {
+  background: #ffffff;
+  border-radius: 6px;
+}
+.loc {
+  height: 64px;
+  background: #fcfdfe !important;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #4e4b66 !important;
+}
+.loc:hover {
+  background: #fcfdfe !important;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 16px;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  color: #4e4b66;
+}

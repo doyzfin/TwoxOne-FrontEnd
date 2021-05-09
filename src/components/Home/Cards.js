@@ -36,7 +36,11 @@ class Cards extends Component {
                 return (
                   <Col className={styles.mainCol} key={index}>
                     <Card className={styles.cards}>
-                      <Card.Img variant="top" src={Bw} className={styles.img} />
+                      <Card.Img
+                        variant="top"
+                        src={`http://localhost:3001/api/${item.movie_image}`}
+                        className={styles.img}
+                      />
                       <Card.Body className={styles.cardBody}>
                         <Card.Title className={styles.title}>
                           {item.movie_name}
@@ -60,7 +64,11 @@ class Cards extends Component {
                 return (
                   <Col className={styles.mainCol} key={index}>
                     <Card className={styles.cards}>
-                      <Card.Img variant="top" src={Bw} className={styles.img} />
+                      <Card.Img
+                        variant="top"
+                        src={`http://localhost:3001/api/${item.movie_image}`}
+                        className={styles.img}
+                      />
                       <Card.Body className={styles.cardBody}>
                         <Card.Title className={styles.title}>
                           {item.movie_name}
