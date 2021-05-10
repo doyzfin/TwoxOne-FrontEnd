@@ -43,17 +43,17 @@ class Premiere extends Component {
     };
   }
   componentDidMount() {
-    this.getDataPremiere();
+    // this.getDataPremiere();
   }
-  getDataPremiere = () => {
-    axiosApiIntances
-      .get("premiere/db")
-      .then((res) => {
-        console.log(res);
-        this.setState({ data: res.data.data });
-      })
-      .catch((err) => console.log(err));
-  };
+  // getDataPremiere = () => {
+  //   axiosApiIntances
+  //     .get("premiere/db")
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.setState({ data: res.data.data });
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
   handleDelete = (id) => {
     this.props.deleteSchedule(id).then((res) => {
       alert("Success Delete");
@@ -68,11 +68,12 @@ class Premiere extends Component {
     this.setState({ [event.target.x]: event.target.value });
   };
   render() {
-    console.log(this.state.x);
+    console.log(this.props.data);
+
     return (
       <>
         <Row className={styles.overRow}>
-          {this.state.data.map((item, index) => {
+          {this.props.data.map((item, index) => {
             console.log(item.premiere_id);
             let date = new Date();
 
@@ -174,6 +175,7 @@ class Premiere extends Component {
                           block
                           variant="outline-primary"
                           className={styles.btnUpdt}
+                          onClick={() => this.props.setUpdate(item)}
                           // onClick={() => handleUpdate(data)}
                         >
                           Update

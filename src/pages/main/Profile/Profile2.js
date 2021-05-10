@@ -2,18 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
-import {
-  Container,
-  Card,
-  Row,
-  Col,
-  Form,
-  Button,
-  InputGroup,
-} from "react-bootstrap";
+import { Container, Card, Row, Col, Button } from "react-bootstrap";
 import styles from "./Profile.module.css";
 import { connect } from "react-redux";
 import { getDataUser } from "../../../redux/actions/profile";
+import Sponsor1 from "../../../assets/img/1.png";
 
 class Profile extends Component {
   constructor() {
@@ -79,6 +72,31 @@ class Profile extends Component {
                     Order History
                   </Link>
                 </div>
+              </Card>
+              <Card className={styles.ticket}>
+                <Row>
+                  <Col sm={8}>
+                    <p className={styles.textLocal}>
+                      {localStorage.getItem("dateTime")}{" "}
+                      {localStorage.getItem("timeBook")} pm
+                    </p>
+                    <h1 className={styles.textLocal1}>
+                      {localStorage.getItem("movieName")}
+                    </h1>
+                  </Col>
+
+                  <Col sm={4}>
+                    <img alt="" src={Sponsor1} />
+                  </Col>
+                </Row>
+                <hr />
+                <Row>
+                  <Col sm={8}>
+                    <Button variant="success">Ticket in Active</Button>
+                  </Col>
+
+                  <Col sm={4}>Show Details</Col>
+                </Row>
               </Card>
             </Col>
           </Row>

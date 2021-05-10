@@ -66,6 +66,10 @@ class Home extends Component {
         },
       ],
       button: "",
+      search: "",
+      sort: "",
+      page: 1,
+      limit: 10,
     };
   }
   componentDidMount() {
@@ -74,7 +78,8 @@ class Home extends Component {
   }
 
   getData = () => {
-    this.props.getAllMovie().then((res) => {
+    const { search, sort, page, limit } = this.state;
+    this.props.getAllMovie(search, sort, page, limit).then((res) => {
       this.setState({ data: res.value.data.data });
     });
     // console.log(this.props);

@@ -9,6 +9,35 @@
   padding: 25px;
   margin-bottom: 48px;
 }
+.ticket {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+}
+.textLocal {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  letter-spacing: 0.75px;
+
+  color: #aaaaaa;
+}
+.textLocal1 {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 38px;
+  /* identical to box height, or 158% */
+
+  letter-spacing: 0.75px;
+
+  color: #000000;
+}
 .text1 {
   font-family: "Mulish", sans-serif;
   font-style: normal;
@@ -126,6 +155,7 @@
 .backRow {
   background-color: #f5f6f8;
   padding-top: 56px;
+  padding-bottom: 56px;
 }
 .mainCard {
   background: #ffffff;

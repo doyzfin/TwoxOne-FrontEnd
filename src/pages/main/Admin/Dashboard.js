@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Dropdown, Card, Button } from "react-bootstrap";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
+import styles from "./Dashboard.module.css";
 // import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
@@ -20,7 +21,7 @@ class Dashboard extends Component {
               <Card>
                 <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
+                    Select Movie
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
@@ -35,7 +36,7 @@ class Dashboard extends Component {
                 </Dropdown>
                 <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
+                    Select Premiere
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
@@ -50,7 +51,7 @@ class Dashboard extends Component {
                 </Dropdown>
                 <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
+                    Select Location
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>

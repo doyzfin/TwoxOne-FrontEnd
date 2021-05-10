@@ -12,6 +12,18 @@ export const getLocation = () => {
     payload: axiosApiIntances.get("location"),
   };
 };
+export const getDataDb = () => {
+  return {
+    type: "GET_DB",
+    payload: axiosApiIntances.get("premiere/db"),
+  };
+};
+export const updateDataDb = (id, data) => {
+  return {
+    type: "UPDATE_DB",
+    payload: axiosApiIntances.patch(`premiere/${id}`, data),
+  };
+};
 export const postSchedule = (data) => {
   return {
     type: "POST_SCHEDULE",

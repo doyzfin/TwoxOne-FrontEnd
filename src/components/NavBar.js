@@ -74,7 +74,7 @@ class NavBar extends Component {
             {this.props.admin ? (
               <Nav className="mr-auto">
                 <Nav.Item>
-                  <Link to="/home" className={styles.link1}>
+                  <Link to="/dashboard" className={styles.link1}>
                     Dashboard
                   </Link>
                 </Nav.Item>

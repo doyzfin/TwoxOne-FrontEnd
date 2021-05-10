@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
-import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Row,
+  Col,
+  Form,
+  Button,
+  Dropdown,
+} from "react-bootstrap";
 import styles from "./Admin.module.css";
 // import Spd from "../../../assets/img/spd.png";
 import Cards from "../../../components/Admin/Card";
@@ -39,6 +47,8 @@ class Admin extends Component {
       show: false,
       setShow: false,
       isAdmin: true,
+      search: "",
+      sort: "",
     };
   }
   componentDidMount() {
@@ -48,7 +58,7 @@ class Admin extends Component {
     this.props.history.push(`movie-page/${id}`);
   };
   getData = () => {
-    const { page, limit } = this.state;
+    const { page, limit, search, sort } = this.state;
 
     // this.setState({ isLoading: true });
     // axiosApiIntances
@@ -62,7 +72,7 @@ class Admin extends Component {
     //       this.setState({ isLoading: false });
     //     }, 1000);
     //   });
-    this.props.getAllMovie(page, limit).then((res) => {
+    this.props.getAllMovie(search, sort, page, limit).then((res) => {
       this.setState({ data: res.action.payload.data.data });
     });
   };
@@ -70,6 +80,10 @@ class Admin extends Component {
     this.setState({
       form: { ...this.state.form, [event.target.name]: event.target.value },
     });
+  };
+  updateSearch = (event) => {
+    this.getData();
+    this.setState({ [event.target.name]: event.target.value });
   };
   handleImage = (event) => {
     this.setState({
@@ -89,6 +103,7 @@ class Admin extends Component {
         movieSynopsis: "",
         movieImage: null,
       },
+      ss: null,
     });
   };
   updateData = (event) => {
@@ -132,8 +147,9 @@ class Admin extends Component {
         movieCast: data.movie_cast,
         movieDuration: data.movie_duration,
         movieSynopsis: data.movie_synopsis,
-        movieImage: this.state.data[0].movie_image,
+        // movieImage: this.state.data[0].movie_image,
       },
+      ss: this.state.data[0].movie_image,
     });
   };
   deleteData = (id) => {
@@ -178,6 +194,14 @@ class Admin extends Component {
       alert("Success Post Movie");
     });
   };
+  handleSort = () => {
+    this.setState({ sort: "movie_name ASC" });
+    this.getData();
+  };
+  handleSort1 = () => {
+    this.setState({ sort: "movie_name DESC" });
+    this.getData();
+  };
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
     this.setState({ page: selectedPage }, () => {
@@ -204,7 +228,7 @@ class Admin extends Component {
     const { totalPage } = this.props.movie.pagination;
     // const { isLoading } = this.props.movie;
     // const { totalPage } = this.props.movie.pagination;
-    console.log(this.state.data[0]);
+    console.log(this.state.sort);
     return (
       <>
         <Container>
@@ -218,7 +242,7 @@ class Admin extends Component {
                     <Col sm={3}>
                       <Card className={styles.cardImg}>
                         <Card.Img
-                          src={`http://localhost:3001/api/${this.state.data.movie_image}`}
+                          src={`http://localhost:3001/api/${this.state.ss}`}
                         />
                       </Card>
                     </Col>
@@ -367,14 +391,33 @@ class Admin extends Component {
                 <Col sm={6}>
                   <Form inline className={styles.formBottom}>
                     <Form.Group>
-                      <Form.Control as="select" className={styles.inputSort}>
-                        <option className={styles.inputSort}>Sort</option>
-                      </Form.Control>
+                      <Dropdown>
+                        <Dropdown.Toggle
+                          block
+                          variant="success"
+                          id="dropdown-basic"
+                          className={styles.inputSort}
+                        >
+                          Sort
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <Dropdown.Item onClick={this.handleSort}>
+                            A - Z
+                          </Dropdown.Item>
+                          <Dropdown.Item onClick={this.handleSort1}>
+                            Z - A
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </Form.Group>
                     <Form.Group>
                       <Form.Control
                         placeholder="Search Movie Name ..."
                         className={styles.inputSearch}
+                        name="search"
+                        value={this.state.search}
+                        onChange={(event) => this.updateSearch(event)}
                       />
                     </Form.Group>
                   </Form>
