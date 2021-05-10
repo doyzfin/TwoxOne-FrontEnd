@@ -8,7 +8,7 @@ import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import HomeImg from "../../../assets/img/Group 15.png";
 import Line from "../../../assets/img/Line 7.png";
-import Spd from "../../../assets/img/spd.png";
+// import Spd from "../../../assets/img/spd.png";
 import { connect } from "react-redux";
 import { logout } from "../../../redux/actions/auth";
 import { getAllMovie } from "../../../redux/actions/movie";

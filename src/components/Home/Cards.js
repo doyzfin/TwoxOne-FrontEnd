@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import styles from "./Cards.module.css";
-import Bw from "../../assets/img/Bw.png";
+// import Bw from "../../assets/img/Bw.png";
 import axiosApiIntances from "../../utils/axios";
 
 class Cards extends Component {

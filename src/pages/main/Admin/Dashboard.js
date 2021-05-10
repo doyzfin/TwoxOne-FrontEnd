@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Dropdown, Card, Button } from "react-bootstrap";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
-import styles from "./Dashboard.module.css";
+// import styles from "./Dashboard.module.css";
 // import { Link } from "react-router-dom";
 
 class Dashboard extends Component {

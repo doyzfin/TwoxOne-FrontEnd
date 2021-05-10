@@ -5,7 +5,7 @@ import axiosApiIntances from "../../../utils/axios";
 import Premiere from "../../../components/MoviePage/Premiere";
 // import ReactPaginate from "react-paginate";
 import styles from "./Movie.module.css";
-import Img from "../../../assets/img/Bw.png";
+// import Img from "../../../assets/img/Bw.png";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
 class Movies extends Component {

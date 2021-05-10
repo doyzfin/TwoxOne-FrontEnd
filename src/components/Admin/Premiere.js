@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import Sponsor1 from "../../assets/img/1.png";
 import styles from "./Premiere.module.css";
-import axiosApiIntances from "../../utils/axios";
+// import axiosApiIntances from "../../utils/axios";
 // import Sponsor2 from "../../assets/img/2.png";
 // import Sponsor3 from "../../assets/img/3.png";
 import { withRouter } from "react-router-dom";
