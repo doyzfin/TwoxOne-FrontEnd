@@ -11,7 +11,7 @@
 
 ## About The Project
 
-Frendly Interface for All user
+Frendly Interface for All user, and no need to queue when buying tickets. Enjoy watching
 
 ## Built With
 
