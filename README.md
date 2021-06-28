@@ -11,7 +11,7 @@
 
 ## About The Project
 
-Frendly Interface for All user
+Frendly Interface for All user, and no need to queue when buying tickets. Enjoy watching
 
 ## Built With
 
@@ -32,10 +32,10 @@ Frendly Interface for All user
 4. Add .env file at root folder project
 
 ```sh
-REACT_APP_ENDPOINT = [Backend API]
+REACT_APP_BACKEND_URL = http://localhost:3001/api/v1
 ```
 
-5. Type `npm run serve`
+5. Type `npm start`
 
 ## Acknowledgements
 
