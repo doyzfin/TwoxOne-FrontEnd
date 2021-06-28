@@ -7,7 +7,7 @@
     <a href="https://github.com/doyzfin/pulls">Request Feature</a>
   </p>
 
-![Image Banner](src/assets/img/bannerREADME.png)
+![Image Banner](src/assets/img/twoxone.png)
 
 ## About The Project
 

@@ -184,7 +184,7 @@ class Home extends Component {
                   <Col sm={3} className={styles.imgAll} key={index}>
                     <img
                       alt=""
-                      src={`http://localhost:3001/api/${movie_image}`}
+                      src={`http://localhost:3001/backend1/api/${movie_image}`}
                       className={styles.imgClick}
                       onClick={(event) =>
                         this.handleMovieDetails(event, movie_id)

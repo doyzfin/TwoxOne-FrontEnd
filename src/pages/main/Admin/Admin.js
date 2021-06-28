@@ -242,7 +242,7 @@ class Admin extends Component {
                     <Col sm={3}>
                       <Card className={styles.cardImg}>
                         <Card.Img
-                          src={`http://localhost:3001/api/${this.state.ss}`}
+                          src={`http://localhost:3001/backend1/api/${this.state.ss}`}
                         />
                       </Card>
                     </Col>

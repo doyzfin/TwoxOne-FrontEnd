@@ -77,7 +77,7 @@ class Movies extends Component {
               <Col sm={4}>
                 <Card className={styles.cardImg}>
                   <Card.Img
-                    src={`http://localhost:3001/api/${movie_image}`}
+                    src={`http://localhost:3001/backend1/api/${movie_image}`}
                     className={styles.imgMain}
                   />
                 </Card>

@@ -19,7 +19,7 @@ class Cards extends Component {
       <>
         <Card className={styles.cardBottom}>
           <Card.Img
-            src={`http://localhost:3001/api/${movie_image}`}
+            src={`http://localhost:3001/backend1/api/${movie_image}`}
             variant="top"
             className={styles.imgCard}
             onClick={() => mvHandle(movie_id)}
