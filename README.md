@@ -7,7 +7,7 @@
     <a href="https://github.com/doyzfin/TwoxOne-FrontEnd/pulls">Request Feature</a>
   </p>
 
-![Image Banner](src/assets/img/twoxone1.png)
+![Image Banner](src/assets/img/twoxone1.jpg)
 
 ## About The Project
 
