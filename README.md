@@ -17,6 +17,7 @@ Frendly Interface for All user, and no need to queue when buying tickets. Enjoy 
 
 [![React](https://img.shields.io/badge/React-v17.0.2-blue)](https://github.com/facebook/react)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.6.x-blue)](https://github.com/react-bootstrap/react-bootstrap)
+[![Redux](https://img.shields.io/badge/redux-v4.1.0-yellowgreen)](https://redux.js.org/)
 
 ## Requirements
 
