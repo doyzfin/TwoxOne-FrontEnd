@@ -1,10 +1,10 @@
 <h1 align='center'>React JS -TwoxOne</h1>
   <p align="center">
-    <a href="link_deploy">View Demo</a>
+    <a href="https://twoxone.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/doyzfin/issues">Report Bug</a>
+    <a href="https://github.com/doyzfin/TwoxOne-FrontEnd/issues">Report Bug</a>
     ·
-    <a href="https://github.com/doyzfin/pulls">Request Feature</a>
+    <a href="https://github.com/doyzfin/TwoxOne-FrontEnd/pulls">Request Feature</a>
   </p>
 
 ![Image Banner](src/assets/img/twoxone.png)
