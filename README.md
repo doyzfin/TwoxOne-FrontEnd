@@ -18,6 +18,8 @@ Frendly Interface for All user, and no need to queue when buying tickets. Enjoy 
 [![React](https://img.shields.io/badge/React-v17.0.2-blue)](https://github.com/facebook/react)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.6.x-blue)](https://github.com/react-bootstrap/react-bootstrap)
 [![Redux](https://img.shields.io/badge/redux-v4.1.0-yellowgreen)](https://redux.js.org/)
+[![Axios](https://img.shields.io/badge/axios-v0.21.0-lightgrey)](https://www.npmjs.com/package/axios)
+
 
 ## Requirements
 
@@ -43,6 +45,7 @@ REACT_APP_BACKEND_URL = http://localhost:3001/api/v1
 - [Axios](https://www.npmjs.com/package/axios)
 - [React](https://reactjs.org/)
 - [React Bootstrap](https://react-bootstrap.github.io/)
+- [Redux](https://redux.js.org/)
 
 ## License
 
