@@ -41,7 +41,7 @@ class Profile extends Component {
   };
   render() {
     const { isClick, isClick1 } = this.state;
-    console.log(this.props.history);
+
     const { id } = this.props.match.params;
     const { user_name, user_image, user_id } = this.state.data;
     return (

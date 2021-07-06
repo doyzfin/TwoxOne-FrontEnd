@@ -29,14 +29,12 @@ class Home extends Component {
     this.getData();
   }
   getData = () => {
-    console.log("Get Data");
     const { page, limit } = this.state;
 
     this.setState({ isLoading: true });
     axiosApiIntances
       .get(`movie?page=${page}&limit=${limit}`)
       .then((res) => {
-        console.log(res);
         this.setState({ data: res.data.data, pagination: res.data.pagination });
       })
       .catch((err) => console.log(err))
@@ -68,20 +66,13 @@ class Home extends Component {
   };
   submitData = (event) => {
     event.preventDefault();
-    console.log("Save Data");
-    // console.log(this.state.form);
     const formData = new FormData();
     formData.append("movieName", this.state.form.movieName);
     formData.append("movieCategory", this.state.form.movieCategory);
     formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
     formData.append("movieImage", this.state.form.movieImage);
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
   };
   setUpdate = (data) => {
-    console.log(data);
-    console.log("setUpdate");
     this.setState({
       isUpdate: true,
       id: data.movie_id,
@@ -95,16 +86,10 @@ class Home extends Component {
 
   updateData = (event) => {
     event.preventDefault();
-    console.log(this.state.form);
-    console.log(this.state.id);
-    console.log("Update");
     this.setState({ isUpdate: false });
     this.resetData(event);
   };
-  deleteData = (id) => {
-    console.log(id);
-    console.log("Delete");
-  };
+  deleteData = (id) => {};
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
     this.setState({ page: selectedPage }, () => {
@@ -113,7 +98,6 @@ class Home extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { totalPage } = this.state.pagination;
     const { isLoading, isUpdate } = this.state;
     const { movieName, movieCategory, movieReleaseDate } = this.state.form;

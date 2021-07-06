@@ -9,13 +9,8 @@ class Cards extends Component {
     this.props.history.push(`/learning/basic-movie-details/${id}`);
   };
   render() {
-    console.log(this.props);
-    const {
-      movie_id,
-      movie_name,
-      movie_category,
-      movie_release_date,
-    } = this.props.data;
+    const { movie_id, movie_name, movie_category, movie_release_date } =
+      this.props.data;
     const { handleUpdate, handleDelete, data } = this.props;
     return (
       <>

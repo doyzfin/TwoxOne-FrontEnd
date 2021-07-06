@@ -170,7 +170,6 @@ class Admin extends Component {
     this.setState({ setShow: true });
   };
   render() {
-    console.log(this.state.form);
     const {
       movieName,
       movieCategory,
@@ -182,7 +181,7 @@ class Admin extends Component {
     } = this.state.form;
     const { isUpdate, show } = this.state;
     const { totalPage } = this.props.movie.pagination;
-    console.log(this.state.sort);
+
     return (
       <>
         <Container>

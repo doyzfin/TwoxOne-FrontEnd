@@ -24,7 +24,7 @@ class Order extends Component {
   };
   booking = (event) => {
     event.preventDefault();
-    console.log("Booking");
+
     const booking = JSON.stringify(this.state.selectedSeat);
     localStorage.setItem(`bookingSeat`, booking);
     this.props.history.push("payment-page");

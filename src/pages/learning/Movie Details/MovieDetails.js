@@ -14,20 +14,13 @@ class MovieDetail extends Component {
     };
   }
 
-  componentDidMount() {
-    // const urlParams = qs.parse(this.props.location.search);
-    // console.log(urlParams.movieId);
-    // console.log(this.props.location.state);
-    console.log(this.props.match.params);
-  }
+  componentDidMount() {}
   bookingSeat = (seat) => {
     this.setState({
       selectedSeat: [...this.state.selectedSeat, seat],
     });
-    console.log(seat);
   };
   booking = () => {
-    console.log("Booking");
     const booking = JSON.stringify(this.state.selectedSeat);
     localStorage.setItem("bookingSeat", booking);
   };

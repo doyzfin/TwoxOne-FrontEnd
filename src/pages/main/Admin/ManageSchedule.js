@@ -69,7 +69,6 @@ class Schedule extends Component {
   };
   getData = () => {
     this.props.getMovieId().then((res) => {
-      console.log(res);
       this.setState({ data: res.action.payload.data.data });
     });
   };
@@ -142,7 +141,6 @@ class Schedule extends Component {
     });
   };
   setUpdate = (data) => {
-    console.log(data);
     this.setState({
       id: data.premiere_id,
       isUpdate: true,

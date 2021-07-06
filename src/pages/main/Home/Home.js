@@ -93,21 +93,17 @@ class Home extends Component {
     });
   };
   getDataMonth = (numMonth) => {
-    console.log("Get Data Month");
     axiosApiIntances
       .get(`movie/month/${numMonth}`)
       .then((res) => {
-        console.log(res);
         this.setState({ data2: res.data.data });
       })
       .catch((err) => console.log(err));
   };
   handleMonth = (numMonth) => {
     if (this.state.button !== numMonth) {
-      console.log("Nilai True");
       this.setState({ isMonth: true, button: numMonth });
     } else {
-      console.log("Nilai False");
       this.setState({ isMonth: false, button: numMonth });
     }
 
@@ -137,7 +133,7 @@ class Home extends Component {
   };
   render() {
     const { setModalShow, isUp, isMonth } = this.state;
-    console.log(this.state.data);
+
     return (
       <>
         <Container>

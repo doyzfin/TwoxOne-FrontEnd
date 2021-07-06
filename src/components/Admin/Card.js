@@ -14,7 +14,6 @@ class Cards extends Component {
       movie_release_date,
     } = this.props.data;
     const { handleUpdate, handleDelete, data, mvHandle } = this.props;
-    console.log(this.props);
     return (
       <>
         <Card className={styles.cardBottom}>

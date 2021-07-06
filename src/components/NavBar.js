@@ -98,7 +98,6 @@ class NavBar extends Component {
   };
   render() {
     const { show } = this.state;
-    console.log(this.state.dataMovie);
     return (
       <>
         <Navbar expand="lg">

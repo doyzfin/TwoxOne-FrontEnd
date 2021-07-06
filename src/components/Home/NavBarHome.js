@@ -17,7 +17,6 @@ class NavBar extends Component {
   handleNavbar = (event) => {
     event.preventDefault();
     this.props.history.push("/home");
-    console.log("handleNavbar");
   };
   handleShow = () => {
     this.setState({ show: true });

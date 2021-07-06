@@ -30,7 +30,7 @@ class Register extends Component {
   };
   handleLogin = (event) => {
     event.preventDefault();
-    console.log(this.state.form);
+
     this.props.register(this.state.form).then((result) => {
       this.props.history.push("/activation");
     });

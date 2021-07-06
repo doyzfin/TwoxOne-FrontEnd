@@ -88,7 +88,7 @@ class Profile extends Component {
   };
   updateData = (event) => {
     const { id } = this.props.match.params;
-    console.log(id);
+
     event.preventDefault();
     const formData = new FormData(); // FORM DATA digunakan untuk menghandle inputan yang memiliki file upload didalamnya
     formData.append("userFirst", this.state.form.userFirst);
@@ -98,19 +98,19 @@ class Profile extends Component {
     formData.append("userImage", this.state.form.userImage);
     this.props.updateUser(id, formData).then((res) => {
       alert("Success Update");
-      console.log(res);
+
       this.getDataUserId(id);
       this.resetForm(event);
     });
   };
   updateDataPass = (event) => {
     const { id } = this.props.match.params;
-    console.log(id);
+
     event.preventDefault();
 
     this.props.updateUserPass(id, this.state.form2).then((res) => {
       alert("Success Update");
-      console.log(res);
+
       this.getDataUserId(id);
       this.resetForm(event);
     });
@@ -119,8 +119,7 @@ class Profile extends Component {
     const { isClick, isClick1 } = this.state;
     const { userFirst, userLast, userEmail, userPhone } = this.state.form;
     const { userPassword, confirmPassword } = this.state.form2;
-    console.log(this.state.form2);
-    // const { id } = this.props.match.params;
+
     const { user_name, user_image } = this.state.data;
     return (
       <>

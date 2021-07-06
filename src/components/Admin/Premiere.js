@@ -60,7 +60,6 @@ class Premiere extends Component {
         <Container>
           <Row className={styles.overRow}>
             {this.props.data.map((item, index) => {
-              console.log(item.premiere_id);
               let date = new Date();
 
               let day = date.getDate();

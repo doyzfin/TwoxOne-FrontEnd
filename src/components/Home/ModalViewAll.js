@@ -31,14 +31,13 @@ class ModalView extends Component {
         this.state.limit
       )
       .then((res) => {
-        console.log(res);
         this.setState = { data: res.action.payload.data.data };
       });
   };
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
     this.setState = { page: selectedPage };
-    console.log(this.state.page);
+
     this.props.getAllMovie(
       this.state.search,
       this.state.sort,
@@ -48,7 +47,7 @@ class ModalView extends Component {
   };
   render() {
     const { show, handleClose, upComing } = this.props;
-    console.log(this.state.data);
+
     return (
       <>
         <Modal

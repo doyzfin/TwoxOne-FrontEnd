@@ -34,7 +34,7 @@ class Profile extends Component {
   };
   render() {
     const { isClick, isClick1 } = this.state;
-    console.log(this.state.data);
+
     const { user_name, user_image, user_id } = this.state.data;
     return (
       <>

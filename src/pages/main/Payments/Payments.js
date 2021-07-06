@@ -68,7 +68,6 @@ class Payment extends Component {
     this.props.history.push("admin-page");
   };
   selectedUser = (num) => {
-    console.log(num);
     this.setState({
       selectedPay: [...this.state.selectedPay, num],
     });

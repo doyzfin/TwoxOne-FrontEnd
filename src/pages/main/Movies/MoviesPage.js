@@ -57,7 +57,6 @@ class Movies extends Component {
   };
 
   render() {
-    console.log(this.state.isSelect);
     const {
       movie_id,
       movie_name,

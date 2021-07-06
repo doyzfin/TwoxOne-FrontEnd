@@ -42,7 +42,7 @@ class Premiere extends Component {
   }
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(this.props);
+
     this.getDataPremiere(id);
   }
   getDataPremiere = (id) => {
@@ -62,7 +62,6 @@ class Premiere extends Component {
     this.setState({ [event.target.x]: event.target.value });
   };
   render() {
-    console.log(this.state.x);
     return (
       <>
         <center>
@@ -101,7 +100,6 @@ class Premiere extends Component {
         </center>
         <Row className={styles.overRow}>
           {this.state.data.map((item, index) => {
-            console.log(item.location_address);
             let date = new Date();
 
             let day = date.getDate();

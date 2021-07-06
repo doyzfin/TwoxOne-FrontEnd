@@ -25,7 +25,6 @@ class Cards extends Component {
   };
 
   render() {
-    console.log(this.props.month);
     const { mvDetails, month } = this.props;
 
     return (
