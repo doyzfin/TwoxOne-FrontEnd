@@ -6,8 +6,8 @@
     overflow-x: scroll;
   }
   .cards {
-    width: 152px !important;
-    height: 330px !important;
+    width: 100% !important;
+    height: 100% !important;
   }
   .cardBody {
     padding: 2px !important;

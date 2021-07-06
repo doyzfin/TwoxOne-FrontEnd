@@ -3,9 +3,7 @@ import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import axiosApiIntances from "../../../utils/axios";
 import Premiere from "../../../components/MoviePage/Premiere";
-// import ReactPaginate from "react-paginate";
 import styles from "./Movie.module.css";
-// import Img from "../../../assets/img/Bw.png";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
 class Movies extends Component {
@@ -24,7 +22,6 @@ class Movies extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props.match.params);
     const { id } = this.props.match.params;
     this.getData(id);
   }
@@ -37,14 +34,20 @@ class Movies extends Component {
       .catch((err) => console.log(err));
   };
   selectedUser = (time) => {
-    this.setState({
-      selectedTime: [...this.state.selectedTime, time],
-    });
-    if (this.state.selectedTime.length < 1) {
-      this.setState({ isSelect: true });
-    } else {
-      this.setState({ isSelect: false });
-    }
+    this.setState({ isSelect: true });
+    // this.setState({
+    //   selectedTime: [...this.state.selectedTime, time],
+    // });
+    localStorage.setItem(`timeBook`, time);
+    // if (this.state.selectedTime.length < 1) {
+    //   this.setState({ isSelect: true });
+    // } else {
+    //   this.setState({ isSelect: false });
+    // }
+  };
+  handleChange = () => {
+    localStorage.removeItem("timeBook");
+    this.setState({ isSelect: false });
   };
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
@@ -54,7 +57,7 @@ class Movies extends Component {
   };
 
   render() {
-    console.log(this.state.data);
+    console.log(this.state.isSelect);
     const {
       movie_id,
       movie_name,
@@ -66,14 +69,13 @@ class Movies extends Component {
       movie_synopsis,
       movie_image,
     } = this.state.data;
-    localStorage.setItem(`timeBook`, this.state.selectedTime);
 
     return (
       <>
         <Container>
           <NavBar login={this.state.isLogin} />
           <Container fluid>
-            <Row>
+            <Row className={styles.rowMovie}>
               <Col sm={4}>
                 <Card className={styles.cardImg}>
                   <Card.Img
@@ -116,6 +118,7 @@ class Movies extends Component {
             </Row>
             <Premiere
               selectUser={this.selectedUser.bind(this)}
+              changeTime={this.handleChange.bind(this)}
               selectStyle={this.state.isSelect}
               movieId={movie_id}
             />

@@ -8,7 +8,9 @@
     margin-top: 20px;
   }
 }
-
+.rowMovie {
+  margin-top: 30px;
+}
 .pagination {
   margin: 15px auto;
   display: flex;

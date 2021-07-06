@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Login.module.css";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
+import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { connect } from "react-redux";
 import { login } from "../../../redux/actions/auth";
 import { Link } from "react-router-dom";
@@ -17,6 +17,7 @@ class Login extends Component {
         userPassword: "",
       },
       isPass: false,
+      isError: false,
     };
   }
   changeText = (event) => {
@@ -29,20 +30,21 @@ class Login extends Component {
   };
   handleLogin = (event) => {
     event.preventDefault();
-    console.log(this.state.form);
-    this.props.login(this.state.form).then((result) => {
-      // [1]
-      // console.log(result.value.data.data.token);
-      // [2]
-      console.log(this.props.auth.data.token);
-      localStorage.setItem("token", this.props.auth.data.token);
-      localStorage.setItem("userId", this.props.auth.data.user_id);
-      if (this.props.auth.data.length > 0) {
-        alert(`${this.props.auth.msg}`);
-      } else {
-        this.props.history.push("/home");
-      }
-    });
+    this.props
+      .login(this.state.form)
+      .then((result) => {
+        localStorage.setItem("token", this.props.auth.data.token);
+        localStorage.setItem("userId", this.props.auth.data.user_id);
+
+        if (this.props.auth.data.length > 0) {
+          alert(`${this.props.auth.msg}`);
+        } else {
+          this.props.history.push("/home");
+        }
+      })
+      .catch((err) => {
+        this.setState({ isError: true });
+      });
   };
   handlePass = () => {
     const { isPass } = this.state;
@@ -79,6 +81,7 @@ class Login extends Component {
                     name="userEmail"
                     value={userEmail}
                     onChange={(event) => this.changeText(event)}
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
@@ -91,8 +94,23 @@ class Login extends Component {
                     name="userPassword"
                     value={userPassword}
                     onChange={(event) => this.changeText(event)}
+                    required
                   />
                 </Form.Group>
+                {this.state.isError && (
+                  <Alert
+                    variant="danger"
+                    style={{
+                      textAlign: "center",
+                      borderRadius: "16px",
+                      fontFamily: "Mulish",
+                      fontWeight: "700",
+                    }}
+                  >
+                    {this.props.auth.msg}
+                  </Alert>
+                )}
+
                 <Button
                   variant="primary"
                   type="submit"

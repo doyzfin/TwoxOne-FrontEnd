@@ -8,10 +8,10 @@ import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import HomeImg from "../../../assets/img/Group 15.png";
 import Line from "../../../assets/img/Line 7.png";
-// import Spd from "../../../assets/img/spd.png";
 import { connect } from "react-redux";
 import { logout } from "../../../redux/actions/auth";
 import { getAllMovie } from "../../../redux/actions/movie";
+import ReactPaginate from "react-paginate";
 
 class Home extends Component {
   constructor(props) {
@@ -69,26 +69,28 @@ class Home extends Component {
       search: "",
       sort: "",
       page: 1,
-      limit: 10,
+      limit: 4,
+      pagination: {},
     };
   }
   componentDidMount() {
     this.getData();
     this.getDataMonth();
   }
-
+  handlePageClick = (event) => {
+    const selectedPage = event.selected + 1;
+    this.setState({ page: selectedPage }, () => {
+      this.getData();
+    });
+  };
   getData = () => {
     const { search, sort, page, limit } = this.state;
     this.props.getAllMovie(search, sort, page, limit).then((res) => {
-      this.setState({ data: res.value.data.data });
+      this.setState({
+        data: res.value.data.data,
+        pagination: res.value.data.pagination,
+      });
     });
-    // console.log(this.props);
-    // axiosApiIntances
-    //   .get(`movie`)
-    //   .then((res) => {
-    //     this.setState({ data: res.data.data });
-    //   })
-    //   .catch((err) => console.log(err));
   };
   getDataMonth = (numMonth) => {
     console.log("Get Data Month");
@@ -135,7 +137,7 @@ class Home extends Component {
   };
   render() {
     const { setModalShow, isUp, isMonth } = this.state;
-    console.log(this.props.movie);
+    console.log(this.state.data);
     return (
       <>
         <Container>
@@ -172,6 +174,7 @@ class Home extends Component {
                   show={setModalShow}
                   handleClose={this.handleClose}
                   getData={this.state.data}
+                  getAllMovie={this.getData}
                   mv={this.handleMovieDetails}
                   upComing={this.handleViewAll}
                 />
@@ -182,18 +185,48 @@ class Home extends Component {
                 const { movie_id, movie_image } = item;
                 return (
                   <Col sm={3} className={styles.imgAll} key={index}>
-                    <img
-                      alt=""
-                      src={`http://localhost:3001/backend1/api/${movie_image}`}
-                      className={styles.imgClick}
-                      onClick={(event) =>
-                        this.handleMovieDetails(event, movie_id)
-                      }
-                    />
+                    {
+                      <div className={styles.image}>
+                        <img
+                          className={styles.image__img}
+                          src={`http://localhost:3001/backend1/api/${movie_image}`}
+                          onClick={(event) =>
+                            this.handleMovieDetails(event, movie_id)
+                          }
+                          alt="Bricks"
+                        />
+                        <div
+                          className={styles.image__overlay}
+                          onClick={(event) =>
+                            this.handleMovieDetails(event, movie_id)
+                          }
+                        >
+                          <div className={styles.image__title}>
+                            {item.movie_name}
+                          </div>
+                          <p className={styles.image__description}>
+                            {item.movie_category}
+                          </p>
+                        </div>
+                      </div>
+                    }
                   </Col>
                 );
               })}
             </Row>
+            <ReactPaginate
+              previousLabel={"prev"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              breakClassName={"break-me"}
+              pageCount={this.props.movie.pagination.totalPage}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handlePageClick}
+              containerClassName={styles.pagination}
+              subContainerClassName={`${styles.pages}${styles.pagination}`}
+              activeClassName={styles.active}
+            />
           </Container>
           <Container className={styles.Cont2}>
             <Row>
@@ -212,6 +245,7 @@ class Home extends Component {
                   getData={this.state.data}
                   mv={this.handleMovieDetails}
                   upComing={isUp}
+                  pagination={this.state.pagination}
                 />
               </Col>
             </Row>

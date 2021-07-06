@@ -49,7 +49,6 @@ class Premiere extends Component {
     axiosApiIntances
       .get(`premiere/db/${id}`)
       .then((res) => {
-        // console.log(res);
         this.setState({ data: res.data.data });
       })
       .catch((err) => console.log(err));
@@ -108,9 +107,6 @@ class Premiere extends Component {
             let day = date.getDate();
 
             let month = date.getMonth();
-            // let thisDay1 = this.state.myDays[thisDay];
-            // let thisDay = date.getDay(),
-            //   thisDay1;
 
             let yy = date.getYear();
 
@@ -130,8 +126,7 @@ class Premiere extends Component {
                 year
               }`
             );
-            // const date = item.schedule_date.slice(0, 10);
-            // localStorage.setItem(`date`, date);
+
             return (
               <Col sm={4} key={index}>
                 <Card className={styles.mainCard}>
@@ -166,44 +161,80 @@ class Premiere extends Component {
                   <hr />
                   <Card.Body>
                     <Row>
-                      {this.state.timeSelect.map((item, index) => {
-                        return (
-                          <>
-                            <Col
-                              xs={3}
-                              className={
-                                this.props.selectStyle
-                                  ? styles.selectedTime
-                                  : styles.time
-                              }
-                              onClick={() => this.props.selectUser(item)}
-                              key={index}
-                            >
-                              {item}
-                            </Col>
-                          </>
-                        );
-                      })}
+                      {this.props.selectStyle ? (
+                        <>
+                          <h1 className={styles.textSchedule}>
+                            Schedule Selected{" "}
+                            <p className={styles.textTime}>
+                              {localStorage.getItem("timeBook")}
+                            </p>
+                          </h1>
+                        </>
+                      ) : (
+                        this.state.timeSelect.map((item, index) => {
+                          return (
+                            <>
+                              <Col
+                                xs={3}
+                                className={
+                                  this.props.selectStyle
+                                    ? styles.selectedTime
+                                    : styles.time
+                                }
+                                onClick={() => this.props.selectUser(item)}
+                                key={index}
+                              >
+                                {item}
+                              </Col>
+                            </>
+                          );
+                        })
+                      )}
                     </Row>
                     <Row className={styles.boxPrice}>
                       <Col xs={6} className={styles.namePrice}>
                         Price
                       </Col>
                       <Col xs={6} className={styles.price}>
-                        ${item.premiere_price}.00/Seat
+                        Rp{item.premiere_price}/Seat
                         {localStorage.setItem(
                           `price`,
                           `${item.premiere_price}`
                         )}
                       </Col>
                     </Row>
-                    <Button
-                      block
-                      className={styles.btnBook}
-                      onClick={this.handleOrder}
-                    >
-                      Book Now
-                    </Button>
+                    {this.props.selectStyle ? (
+                      <>
+                        <Button
+                          block
+                          className={styles.btnBook}
+                          onClick={this.handleOrder}
+                        >
+                          Book Now
+                        </Button>
+                        <Button
+                          block
+                          className={styles.btnBook1}
+                          onClick={this.props.changeTime}
+                        >
+                          Change Schedule
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button
+                          block
+                          className={styles.btnBook}
+                          onClick={this.handleOrder}
+                          disabled
+                        >
+                          Book Now
+                        </Button>
+                        <p className={styles.alertSchedule}>
+                          Please Select Schedule To Continue
+                        </p>
+                      </>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>

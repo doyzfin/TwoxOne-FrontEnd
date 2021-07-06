@@ -1,14 +1,54 @@
 import React, { Component } from "react";
 import { Modal, Card, Row, Col } from "react-bootstrap";
-import spd from "../../assets/img/spd.png";
 import styles from "./ModalViewAll.module.css";
+import ReactPaginate from "react-paginate";
+import { getAllMovie } from "../../redux/actions/movie";
+import { connect } from "react-redux";
 
 class ModalView extends Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      data: [],
+      total: {},
+      page: 1,
+      limit: 4,
+      search: "",
+      sort: "movie_id ASC",
+    };
+  }
+  componentDidMount() {
+    this.setState = { total: this.props.pagination };
+    this.getData();
+  }
+  getData = () => {
+    this.props
+      .getAllMovie(
+        this.state.search,
+        this.state.sort,
+        this.state.page,
+        this.state.limit
+      )
+      .then((res) => {
+        console.log(res);
+        this.setState = { data: res.action.payload.data.data };
+      });
+  };
+  handlePageClick = (event) => {
+    const selectedPage = event.selected + 1;
+    this.setState = { page: selectedPage };
+    console.log(this.state.page);
+    this.props.getAllMovie(
+      this.state.search,
+      this.state.sort,
+      this.state.page + selectedPage,
+      this.state.limit
+    );
+  };
   render() {
     const { show, handleClose, upComing } = this.props;
-    console.log(this.props.getData);
+    console.log(this.state.data);
     return (
       <>
         <Modal
@@ -25,18 +65,20 @@ class ModalView extends Component {
           </Modal.Header>
           <Modal.Body>
             <Row>
-              {this.props.getData.map((item, index) => {
+              {this.props.movie.data.map((item, index) => {
                 const {
                   movie_name,
                   movie_id,
                   movie_category,
                   movie_release_date,
+                  movie_image,
                 } = item;
                 return (
-                  <Col xs={4} key={index}>
-                    <Card>
+                  <Col xs={3} key={index}>
+                    <Card className={styles.movieCard}>
                       <Card.Img
-                        src={spd}
+                        src={`http://localhost:3001/backend1/api/${movie_image}`}
+                        className={styles.imgMovie}
                         onClick={(event) => this.props.mv(event, movie_id)}
                       />
                       <Card.Title className={styles.name}>
@@ -51,6 +93,19 @@ class ModalView extends Component {
                   </Col>
                 );
               })}
+              <ReactPaginate
+                previousLabel={"prev"}
+                nextLabel={"next"}
+                breakLabel={"..."}
+                breakClassName={"break-me"}
+                pageCount={this.props.movie.pagination.totalPage}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={this.handlePageClick}
+                containerClassName={styles.pagination}
+                subContainerClassName={`${styles.pages}${styles.pagination}`}
+                activeClassName={styles.active}
+              />
             </Row>
           </Modal.Body>
           <Modal.Footer>© 2020 Tickitz. All Rights Reserved.</Modal.Footer>
@@ -59,5 +114,12 @@ class ModalView extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  user: state.user,
+  auth: state.auth,
+  movie: state.movie,
+});
 
-export default ModalView;
+const mapDispatchToProps = { getAllMovie };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalView);

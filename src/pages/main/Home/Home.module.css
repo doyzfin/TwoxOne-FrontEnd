@@ -58,11 +58,126 @@
     flex-wrap: nowrap;
     overflow-x: auto;
   }
+  .pagination {
+    display: flex;
+
+    overflow-x: auto;
+    list-style: none;
+    outline: none;
+  }
+}
+.pagination {
+  margin: 20px;
+  justify-content: center;
+  display: flex;
+
+  list-style: none;
+  outline: none;
+}
+.pagination > .active > a {
+  background-color: white !important;
+  border-color: #dedede;
+  color: #5f2eea;
+}
+.pagination > li > a {
+  border: 1px solid #dedede !important;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  margin: 12px;
+  border-radius: 20%;
+  background-color: white !important;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #5f2eea !important;
+  border-color: #47ccde;
+  outline: none;
+  color: white !important;
+}
+.pagination > li > a,
+.pagination > li > span {
+  color: #5f2eea !important;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-radius: unset;
+}
+.image {
+  position: relative;
+  width: 400px;
+}
+
+.image__img {
+  display: block;
+}
+
+.image__overlay {
+  width: 40%;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.image__overlay--blur {
+  backdrop-filter: blur(5px);
+}
+
+.image__overlay--primary {
+  background: #009578;
+}
+
+.image__overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.image__overlay:hover {
+  opacity: 1;
+}
+
+.image__overlay:hover > * {
+  transform: translateY(0);
+}
+
+.image__title {
+  font-size: 14px;
+  font-family: "Mulish";
+  font-weight: bold;
+  text-align: center;
+}
+
+.image__description {
+  font-size: 12px;
+  margin-top: 0.25em;
 }
 .allMovies {
   flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  /* flex-wrap: nowrap;
+  overflow-x: auto; */
 }
 .imgAll {
   margin-bottom: 12px;

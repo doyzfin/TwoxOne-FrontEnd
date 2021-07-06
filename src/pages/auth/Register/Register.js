@@ -32,11 +32,6 @@ class Register extends Component {
     event.preventDefault();
     console.log(this.state.form);
     this.props.register(this.state.form).then((result) => {
-      // [1]
-      // console.log(result.value.data.data.token);
-      // [2]
-      // console.log(this.props.auth.data.token);
-      // localStorage.setItem("token", this.props.auth.data.token);
       this.props.history.push("/activation");
     });
   };
@@ -104,6 +99,7 @@ class Register extends Component {
                     name="userEmail"
                     value={userEmail}
                     onChange={(event) => this.changeText(event)}
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
@@ -116,6 +112,7 @@ class Register extends Component {
                     name="userPassword"
                     value={userPassword}
                     onChange={(event) => this.changeText(event)}
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="formBasicName">
@@ -130,6 +127,7 @@ class Register extends Component {
                     name="userName"
                     value={userName}
                     onChange={(event) => this.changeText(event)}
+                    required
                   />
                 </Form.Group>
                 <Button
