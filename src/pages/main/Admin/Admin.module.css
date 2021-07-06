@@ -219,20 +219,19 @@
 
 .mainCardBottom {
   padding: 45px 73px;
-  margin-bottom: 106px;
+  margin-bottom: 50px;
 }
 
 .mainCard1 {
   padding: 56px 40px;
 }
 .pagination {
-  margin: 15px auto;
+  margin: 10px;
+  justify-content: center;
   display: flex;
+  margin-bottom: 50px;
   list-style: none;
   outline: none;
-  text-align: center;
-  justify-content: center;
-  margin-bottom: 120px;
 }
 .pagination > .active > a {
   background-color: white !important;
@@ -258,9 +257,10 @@
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: white !important;
+  background-color: #5f2eea !important;
   border-color: #47ccde;
   outline: none;
+  color: white !important;
 }
 .pagination > li > a,
 .pagination > li > span {
