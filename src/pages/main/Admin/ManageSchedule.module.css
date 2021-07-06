@@ -15,6 +15,24 @@
   letter-spacing: 0.75px;
   color: #4e4b66;
   margin-bottom: 12px;
+  cursor: pointer;
+}
+.textAlert {
+  margin-top: 20px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 23px;
+  align-items: center;
+  text-align: center;
+  color: green;
+}
+.cardSponsor {
+  border: none;
+}
+.rowCard {
+  margin-top: 20px;
 }
 .colRight {
   float: right;
@@ -115,6 +133,7 @@
   background: #ffffff;
   border-radius: 6px;
   margin-bottom: 116px;
+  padding: 50px;
 }
 .loc {
   height: 64px;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import {
@@ -24,6 +23,7 @@ import {
 import Sponsor1 from "../../../assets/img/1.png";
 import Sponsor2 from "../../../assets/img/2.png";
 import Sponsor3 from "../../../assets/img/3.png";
+import noImg from "../../../assets/img/def.png";
 
 class Schedule extends Component {
   constructor() {
@@ -53,11 +53,11 @@ class Schedule extends Component {
       ],
       ss: null,
       id: "",
+      isSubmit: false,
+      isClick: false,
     };
   }
   componentDidMount() {
-    // console.log(this.props.match.params);
-    // const { id } = this.props.match.params;
     this.getData();
     this.getDataLocation();
     this.getDataPremiere();
@@ -72,24 +72,11 @@ class Schedule extends Component {
       console.log(res);
       this.setState({ data: res.action.payload.data.data });
     });
-    //   axiosApiIntances
-    //     .get(`movie/${id}`)
-    //     .then((res) => {
-    //       this.setState({ data: res.data.data[0] });
-    //     })
-    //     .catch((err) => console.log(err));
   };
   getDataLocation = () => {
     this.props.getLocation().then((res) => {
-      console.log(res);
       this.setState({ dataLoc: res.action.payload.data.data });
     });
-    //   axiosApiIntances
-    //     .get(`movie/${id}`)
-    //     .then((res) => {
-    //       this.setState({ data: res.data.data[0] });
-    //     })
-    //     .catch((err) => console.log(err));
   };
   submitData = (event) => {
     const { form } = this.state;
@@ -97,23 +84,11 @@ class Schedule extends Component {
     this.props.postSchedule(form).then((res) => {
       alert("Success Post ");
       this.getDataPremiere();
+      this.setState({ isClick: false });
+      this.resetData(event);
     });
   };
-  // getDataPremiere = (id) => {
-  //   axiosApiIntances
-  //     .get(`premiere/db/${id}`)
-  //     .then((res) => {
-  //       // console.log(res);
-  //       this.setState({ data: res.data.data });
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
 
-  // this.updateForm(event);
-  // if (event.target.innerHTML === "08.30") {
-  //   // this.setState({ form: { scheduleTime: [] } });
-  //   // a = "00:08:30";
-  // }
   resetData = (event) => {
     event.preventDefault();
     this.setState({
@@ -126,6 +101,9 @@ class Schedule extends Component {
         scheduleStart: "",
         scheduleEnd: "",
       },
+      isUpdate: false,
+      isSubmit: false,
+      isClick: false,
     });
   };
   updateData = (event) => {
@@ -134,21 +112,21 @@ class Schedule extends Component {
     this.props.updateDataDb(id, form).then((res) => {
       alert("Update Success");
       this.getDataPremiere();
+      this.resetData(event);
     });
   };
   handleTime = (item) => {
-    // console.log(event);
-    console.log(item.target.innerHTML);
-
     this.setState({
       form: {
         ...this.state.form,
         scheduleTime: [item.target.innerHTML],
       },
+      isClick: true,
     });
   };
   handleMovieId = (mv, event, image) => {
     this.setState({
+      isSubmit: true,
       form: {
         movieId: mv,
       },
@@ -176,6 +154,7 @@ class Schedule extends Component {
         scheduleStart: data.schedule_date_start,
         scheduleEnd: data.schedule_date_end,
       },
+      ss: data.movie_image,
     });
   };
   updateForm = (event) => {
@@ -188,14 +167,11 @@ class Schedule extends Component {
   };
 
   render() {
-    console.log(this.state.id);
-    const { isUpdate } = this.state;
+    const { isUpdate, isSubmit, isClick } = this.state;
     const {
-      // locationId,
-      // movieId,
       premiereName,
       premierePrice,
-      // scheduleTime,
+
       scheduleStart,
       scheduleEnd,
     } = this.state.form;
@@ -211,7 +187,13 @@ class Schedule extends Component {
                   <Card className={styles.cardImg}>
                     <img
                       alt=""
-                      src={`http://localhost:3001/api/${this.state.ss}`}
+                      src={
+                        isUpdate
+                          ? `http://localhost:3001/backend1/api/${this.state.ss} `
+                          : isSubmit
+                          ? `http://localhost:3001/backend1/api/${this.state.ss}`
+                          : noImg
+                      }
                       className={styles.img1}
                     />
                   </Card>
@@ -295,9 +277,9 @@ class Schedule extends Component {
                               <Form.Label className={styles.label}>
                                 Premiere
                               </Form.Label>
-                              <Row>
+                              <Row className={styles.rowCard}>
                                 <Col>
-                                  <Card>
+                                  <Card className={styles.cardSponsor}>
                                     <img
                                       alt=""
                                       src={Sponsor1}
@@ -306,7 +288,7 @@ class Schedule extends Component {
                                   </Card>
                                 </Col>
                                 <Col>
-                                  <Card>
+                                  <Card className={styles.cardSponsor}>
                                     <img
                                       alt=""
                                       src={Sponsor2}
@@ -315,7 +297,7 @@ class Schedule extends Component {
                                   </Card>
                                 </Col>
                                 <Col>
-                                  <Card>
+                                  <Card className={styles.cardSponsor}>
                                     <img
                                       alt=""
                                       src={Sponsor3}
@@ -393,27 +375,33 @@ class Schedule extends Component {
                                 Time
                               </Form.Label>
                               <Row>
-                                {this.state.time.map((item, index) => {
-                                  const { scheduleTime } = this.state.form;
-                                  // console.log(item);
-                                  return (
-                                    <Col sm={3} key={index}>
-                                      <Card
-                                        className={styles.textTime}
-                                        name="scheduleTime"
-                                        value={scheduleTime}
-                                        onClick={(event) =>
-                                          this.handleTime(event)
-                                        }
-                                        // onChange={(event) =>
-                                        //   this.updateForm(event)
-                                        // }
-                                      >
-                                        {item.slice(3)}
-                                      </Card>
-                                    </Col>
-                                  );
-                                })}
+                                {isClick ? (
+                                  <Col>
+                                    <Card>
+                                      <p className={styles.textAlert}>
+                                        Time Automatic Selected, Please Continue
+                                      </p>
+                                    </Card>
+                                  </Col>
+                                ) : (
+                                  this.state.time.map((item, index) => {
+                                    const { scheduleTime } = this.state.form;
+                                    return (
+                                      <Col sm={3} key={index}>
+                                        <Card
+                                          className={styles.textTime}
+                                          name="scheduleTime"
+                                          value={scheduleTime}
+                                          onClick={(event) =>
+                                            this.handleTime(event)
+                                          }
+                                        >
+                                          {item.slice(3)}
+                                        </Card>
+                                      </Col>
+                                    );
+                                  })
+                                )}
                               </Row>
                             </Form.Group>
                           </Form.Row>
@@ -441,6 +429,7 @@ class Schedule extends Component {
                   <Premiere
                     data={this.state.data2}
                     setUpdate={this.setUpdate.bind(this)}
+                    getDataPremiere={this.getDataPremiere}
                   />
                 </Col>
               </Row>

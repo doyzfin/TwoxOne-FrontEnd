@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import NavBar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
-import {
-  Container,
-  Card,
-  Row,
-  Col,
-  Form,
-  Button,
-  Dropdown,
-} from "react-bootstrap";
+import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
 import styles from "./Admin.module.css";
-// import Spd from "../../../assets/img/spd.png";
+import noImg from "../../../assets/img/default-movie.png";
 import Cards from "../../../components/Admin/Card";
-// import axiosApiIntances from "../../../utils/axios";
 import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
 import {
@@ -59,19 +50,6 @@ class Admin extends Component {
   };
   getData = () => {
     const { page, limit, search, sort } = this.state;
-
-    // this.setState({ isLoading: true });
-    // axiosApiIntances
-    //   .get(`movie?page=${page}&limit=${limit}`)
-    //   .then((res) => {
-    //     this.setState({ data: res.data.data, pagination: res.data.pagination });
-    //   })
-    //   .catch((err) => console.log(err))
-    //   .finally(() => {
-    //     setTimeout(() => {
-    //       this.setState({ isLoading: false });
-    //     }, 1000);
-    //   });
     this.props.getAllMovie(search, sort, page, limit).then((res) => {
       this.setState({ data: res.action.payload.data.data });
     });
@@ -82,8 +60,10 @@ class Admin extends Component {
     });
   };
   updateSearch = (event) => {
-    this.getData();
+    event.preventDefault();
+    const { page, limit, search, sort } = this.state;
     this.setState({ [event.target.name]: event.target.value });
+    this.getData(search, sort, page, limit);
   };
   handleImage = (event) => {
     this.setState({
@@ -104,13 +84,15 @@ class Admin extends Component {
         movieImage: null,
       },
       ss: null,
+      isUpdate: false,
     });
   };
   updateData = (event) => {
+    this.setState({ form: { movieImage: null } });
+    const { page, limit, search, sort } = this.state;
     const { id } = this.state;
-    console.log(id);
     event.preventDefault();
-    const formData = new FormData(); // FORM DATA digunakan untuk menghandle inputan yang memiliki file upload didalamnya
+    const formData = new FormData();
     formData.append("movieName", this.state.form.movieName);
     formData.append("movieDirector", this.state.form.movieDirector);
     formData.append("movieCast", this.state.form.movieCast);
@@ -122,20 +104,12 @@ class Admin extends Component {
     this.setState({ isUpdate: false });
     this.props.updateMovie(id, formData).then((res) => {
       alert("Success Update");
-      console.log(res);
-      this.props.getAllMovie();
+      this.props.getAllMovie(search, sort, page, limit);
       this.resetData(event);
     });
-    // axiosApiIntances
-    //   .patch(`movie/${id}`, form)
-    //   .then((res) => {
-    //     this.getData();
-    //     this.resetData(event);
-    //   })
-    //   .catch((err) => console.log(err));
   };
   setUpdate = (data) => {
-    // console.log(data);
+    this.setState({ isUpdate: true });
     this.setState({
       isUpdate: true,
       id: data.movie_id,
@@ -147,26 +121,21 @@ class Admin extends Component {
         movieCast: data.movie_cast,
         movieDuration: data.movie_duration,
         movieSynopsis: data.movie_synopsis,
-        // movieImage: this.state.data[0].movie_image,
+        movieImage: data.movie_image,
       },
       ss: this.state.data[0].movie_image,
     });
   };
   deleteData = (id) => {
+    const { page, limit, search, sort } = this.state;
     this.props.deleteMovie(id).then((res) => {
-      this.props.getAllMovie();
+      this.props.getAllMovie(search, sort, page, limit);
       alert("Success DELETE");
     });
-    // axiosApiIntances
-    //   .delete(`movie/${id}`)
-    //   .then((res) => {
-    //     this.getData();
-    //   })
-    //   .catch((err) => console.log(err));
   };
   submitData = (event) => {
     event.preventDefault();
-    const formData = new FormData(); // FORM DATA digunakan untuk menghandle inputan yang memiliki file upload didalamnya
+    const formData = new FormData();
     formData.append("movieName", this.state.form.movieName);
     formData.append("movieDirector", this.state.form.movieDirector);
     formData.append("movieCast", this.state.form.movieCast);
@@ -175,33 +144,19 @@ class Admin extends Component {
     formData.append("movieImage", this.state.form.movieImage);
     formData.append("movieCategory", this.state.form.movieCategory);
     formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
-    // const { form } = this.state;
-    // axiosApiIntances
-    //   .post(`movie/`, form)
-    //   .then((res) => {
-    //     this.getData();
-    //     this.resetData();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     this.props.postMovie(formData).then((res) => {
       this.props.getAllMovie();
       this.resetData(event);
       alert("Success Post Movie");
     });
   };
-  handleSort = () => {
-    this.setState({ sort: "movie_name ASC" });
+  handleSort = (event) => {
+    event.preventDefault();
+
+    this.setState({ [event.target.name]: event.target.value });
     this.getData();
   };
-  handleSort1 = () => {
-    this.setState({ sort: "movie_name DESC" });
-    this.getData();
-  };
+
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
     this.setState({ page: selectedPage }, () => {
@@ -215,6 +170,7 @@ class Admin extends Component {
     this.setState({ setShow: true });
   };
   render() {
+    console.log(this.state.form);
     const {
       movieName,
       movieCategory,
@@ -226,8 +182,6 @@ class Admin extends Component {
     } = this.state.form;
     const { isUpdate, show } = this.state;
     const { totalPage } = this.props.movie.pagination;
-    // const { isLoading } = this.props.movie;
-    // const { totalPage } = this.props.movie.pagination;
     console.log(this.state.sort);
     return (
       <>
@@ -242,7 +196,11 @@ class Admin extends Component {
                     <Col sm={3}>
                       <Card className={styles.cardImg}>
                         <Card.Img
-                          src={`http://localhost:3001/backend1/api/${this.state.ss}`}
+                          src={
+                            this.state.isUpdate
+                              ? `http://localhost:3001/backend1/api/${this.state.form.movieImage}`
+                              : noImg
+                          }
                         />
                       </Card>
                     </Col>
@@ -391,25 +349,19 @@ class Admin extends Component {
                 <Col sm={6}>
                   <Form inline className={styles.formBottom}>
                     <Form.Group>
-                      <Dropdown>
-                        <Dropdown.Toggle
-                          block
-                          variant="success"
-                          id="dropdown-basic"
-                          className={styles.inputSort}
-                        >
+                      <Form.Control
+                        as="select"
+                        block
+                        className={styles.inputSort}
+                        name="sort"
+                        onChange={(event) => this.handleSort(event)}
+                      >
+                        <option value="#" selected="true" disabled="disabled">
                           Sort
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item onClick={this.handleSort}>
-                            A - Z
-                          </Dropdown.Item>
-                          <Dropdown.Item onClick={this.handleSort1}>
-                            Z - A
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
+                        </option>
+                        <option value="movie_name DESC"> A - Z</option>
+                        <option value="movie_name ASC">Z - A</option>
+                      </Form.Control>
                     </Form.Group>
                     <Form.Group>
                       <Form.Control
