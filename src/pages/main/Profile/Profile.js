@@ -25,7 +25,7 @@ class Profile extends Component {
     this.state = {
       data: {},
       isClick: false,
-      isClick1: false,
+      isClick1: true,
 
       form: {
         userFirst: "",
@@ -38,6 +38,7 @@ class Profile extends Component {
         userPassword: "",
         confirmPassword: "",
       },
+      isError: false,
     };
   }
   componentDidMount() {
@@ -50,10 +51,15 @@ class Profile extends Component {
     });
   };
   handleClick = () => {
-    this.setState({ isClick: true, isClick1: true });
+    this.setState({ isClick: true });
+    this.props.history.push(
+      `/profile-page/history-user/${localStorage.getItem("userId")}`
+    );
   };
   handleClick1 = () => {
     this.setState({ isClick1: true });
+
+    this.props.history.push(`/profile-page/${localStorage.getItem("userId")}`);
   };
   updateForm = (event) => {
     this.setState({
@@ -96,12 +102,20 @@ class Profile extends Component {
     formData.append("userEmail", this.state.form.userEmail);
     formData.append("userPhone", this.state.form.userPhone);
     formData.append("userImage", this.state.form.userImage);
-    this.props.updateUser(id, formData).then((res) => {
-      alert("Success Update");
-
-      this.getDataUserId(id);
-      this.resetForm(event);
-    });
+    this.props
+      .updateUser(id, formData)
+      .then((res) => {
+        alert("Success Update");
+        window.location.reload();
+        this.getDataUserId(id);
+        this.resetForm(event);
+      })
+      .catch((err) => {
+        console.log(err.response);
+        this.setState({ isError: true });
+        alert(err.response.data.msg);
+        this.resetForm(event);
+      });
   };
   updateDataPass = (event) => {
     const { id } = this.props.match.params;
@@ -110,7 +124,7 @@ class Profile extends Component {
 
     this.props.updateUserPass(id, this.state.form2).then((res) => {
       alert("Success Update");
-
+      window.location.reload();
       this.getDataUserId(id);
       this.resetForm(event);
     });
@@ -132,7 +146,7 @@ class Profile extends Component {
 
                 <img
                   alt=""
-                  src={`http://localhost:3001/api/user/${user_image}`}
+                  src={`http://localhost:3001/backend1/api/user/${user_image}`}
                   className={styles.userImg}
                 />
                 <Form.Control
@@ -148,14 +162,12 @@ class Profile extends Component {
               <Card className={styles.card1}>
                 <div inline>
                   <Link
-                    to="#"
                     className={isClick1 ? styles.text1 : styles.text2}
                     onClick={this.handleClick1}
                   >
                     Account History
                   </Link>
                   <Link
-                    to={`history-user/${localStorage.getItem("userId")}`}
                     className={isClick ? styles.text1 : styles.text2}
                     onClick={this.handleClick}
                   >

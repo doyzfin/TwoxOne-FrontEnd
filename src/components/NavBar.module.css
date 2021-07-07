@@ -134,3 +134,8 @@
 .pagination > li:last-child > span {
   border-radius: unset;
 }
+.imagePP {
+  border-radius: 100%;
+  width: 57px;
+  height: 57px;
+}

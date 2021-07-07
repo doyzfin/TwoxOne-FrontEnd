@@ -146,7 +146,7 @@ class Premiere extends Component {
                           Price
                         </Col>
                         <Col xs={6} className={styles.price}>
-                          Rp{item.premiere_price}/Seat
+                          ${item.premiere_price}/Seat
                           {localStorage.setItem(
                             `price`,
                             `${item.premiere_price}`

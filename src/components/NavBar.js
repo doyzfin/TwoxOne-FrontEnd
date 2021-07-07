@@ -212,6 +212,7 @@ class NavBar extends Component {
             <img
               alt="profile"
               src={`http://localhost:3001/backend1/api/user/${this.state.data.user_image}`}
+              className={styles.imagePP}
             />
           </Navbar.Collapse>
         </Navbar>

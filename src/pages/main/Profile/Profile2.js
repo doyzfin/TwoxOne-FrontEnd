@@ -13,7 +13,7 @@ class Profile extends Component {
     super();
     this.state = {
       data: {},
-      isClick: false,
+      isClick: true,
       isClick1: false,
     };
   }
@@ -27,14 +27,16 @@ class Profile extends Component {
     });
   };
   handleClick = () => {
-    this.setState({ isClick: true, isClick1: true });
+    this.setState({ isClick: true });
   };
   handleClick1 = () => {
     this.setState({ isClick1: true });
+    this.props.history.push(`/profile-page/${localStorage.getItem("userId")}`);
   };
   render() {
     const { isClick, isClick1 } = this.state;
 
+    // eslint-disable-next-line no-unused-vars
     const { user_name, user_image, user_id } = this.state.data;
     return (
       <>
@@ -47,7 +49,7 @@ class Profile extends Component {
 
                 <img
                   alt=""
-                  src={`http://localhost:3001/api/user/${user_image}`}
+                  src={`http://localhost:3001/backend1/api/user/${user_image}`}
                   className={styles.userImg}
                 />
                 <h1 className={styles.userName}>{user_name}</h1>
@@ -58,14 +60,12 @@ class Profile extends Component {
               <Card className={styles.card1}>
                 <div inline>
                   <Link
-                    to={`profile-page/${user_id}`}
                     className={isClick1 ? styles.text1 : styles.text2}
                     onClick={this.handleClick1}
                   >
                     Account History
                   </Link>
                   <Link
-                    to={`profile-page/${user_id}/history-user`}
                     className={isClick ? styles.text1 : styles.text2}
                     onClick={this.handleClick}
                   >

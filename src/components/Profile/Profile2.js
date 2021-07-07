@@ -14,6 +14,7 @@ import {
 import styles from "./Profile.module.css";
 import { connect } from "react-redux";
 import { getDataUser } from "../../../redux/actions/profile";
+import noImg from "../../assets/img/default.png";
 
 class Profile extends Component {
   constructor() {
@@ -52,11 +53,7 @@ class Profile extends Component {
               <Card className={styles.mainCard}>
                 <p className={styles.info}>INFO</p>
 
-                <img
-                  alt=""
-                  src={`http://localhost:3001/api/user/${user_image}`}
-                  className={styles.userImg}
-                />
+                <img alt="" src={noImg} className={styles.userImg} />
                 <h1 className={styles.userName}>{user_name}</h1>
                 <p className={styles.mov}>Moviegoers</p>
               </Card>
@@ -72,7 +69,7 @@ class Profile extends Component {
                     Account History
                   </Link>
                   <Link
-                    to={`profile-page/${user_id}/history-user`}
+                    to={`profile-page/history-user/${user_id}`}
                     className={isClick ? styles.text1 : styles.text2}
                     onClick={this.handleClick}
                   >
