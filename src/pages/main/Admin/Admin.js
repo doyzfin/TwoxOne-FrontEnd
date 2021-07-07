@@ -358,8 +358,8 @@ class Admin extends Component {
                         <option value="#" selected="true" disabled="disabled">
                           Sort
                         </option>
-                        <option value="movie_name DESC"> A - Z</option>
-                        <option value="movie_name ASC">Z - A</option>
+                        <option value="movie_name ASC"> A - Z</option>
+                        <option value="movie_name DESC">Z - A</option>
                       </Form.Control>
                     </Form.Group>
                     <Form.Group>
