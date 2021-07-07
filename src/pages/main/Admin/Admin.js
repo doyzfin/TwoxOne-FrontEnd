@@ -152,9 +152,9 @@ class Admin extends Component {
   };
   handleSort = (event) => {
     event.preventDefault();
-
-    this.setState({ [event.target.name]: event.target.value });
-    this.getData();
+    this.setState({ [event.target.name]: event.target.value }, () => {
+      this.getData();
+    });
   };
 
   handlePageClick = (event) => {
