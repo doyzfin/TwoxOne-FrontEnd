@@ -36,3 +36,11 @@ export const deleteSchedule = (id) => {
     payload: axiosApiIntances.delete(`premiere/${id}`),
   };
 };
+export const getChart = (movie, premiere, location) => {
+  return {
+    type: "GET_CHART",
+    payload: axiosApiIntances.get(
+      `booking/chart?movieId=${movie}&premiereName=${premiere}&locationId=${location}`
+    ),
+  };
+};

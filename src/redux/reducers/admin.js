@@ -24,6 +24,24 @@ const admin = (state = initialState, action) => {
         ...state,
         data: [],
       };
+    case "GET_CHART_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case "GET_CHART_FULFILLED":
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload.data.data,
+      };
+    case "GET_CHART_REJECTED":
+      return {
+        ...state,
+        data: [],
+      };
     case "GET_DB_PENDING":
       return {
         ...state,

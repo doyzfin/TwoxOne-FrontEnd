@@ -35,6 +35,7 @@ class Login extends Component {
       .then((result) => {
         localStorage.setItem("token", this.props.auth.data.token);
         localStorage.setItem("userId", this.props.auth.data.user_id);
+        localStorage.setItem("refreshToken", this.props.auth.data.refreshToken);
 
         if (this.props.auth.data.length > 0) {
           alert(`${this.props.auth.msg}`);

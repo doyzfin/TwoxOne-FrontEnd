@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.cardDash {
+  padding: 30px 0px;
+  margin-bottom: 50px;
+  border-radius: 8px;
+}
+.clickDash {
+  height: 460px;
+  padding: 30px 0px;
+  margin-bottom: 50px;
+  border-radius: 8px;
+}
+.dash {
+  margin-top: 20px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+  margin-bottom: 20px;
+}
+.label {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+}
+.cardFilter {
+  padding: 20px;
+  background: #ffffff;
+  border: 0.5px solid #dedede;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.btnFilter {
+  height: 40px;
+  margin-top: 50px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: #5f2eea;
+  border: #5f2eea;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+.btnFilter:hover {
+  margin-top: 50px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: #5f2eea;
+  border: #5f2eea;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+}
+.btnFilter:focus {
+  background-color: #5f2eea;
+  box-shadow: none;
+}
+.btnReset {
+  height: 40px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border: #5f2eea 2px solid;
+  color: #5f2eea;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+.btnReset:hover {
+  margin-top: 10px;
+  background-color: #ffffff;
+  border: #5f2eea 2px solid;
+  color: #5f2eea;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+}
+.btnReset:focus {
+  background-color: #ffffff;
+  box-shadow: none;
+  color: #5f2eea;
+  border: #5f2eea 2px solid;
+}
+.noGraph {
+  text-align: center;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  margin-top: 180px;
+  text-shadow: 2px 2px grey;
+}
