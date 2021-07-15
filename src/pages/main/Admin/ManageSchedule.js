@@ -187,9 +187,9 @@ class Schedule extends Component {
                       alt=""
                       src={
                         isUpdate
-                          ? `http://localhost:3001/backend1/api/${this.state.ss} `
+                          ? `https://twoxone-app.herokuapp.com/backend1/api/${this.state.ss} `
                           : isSubmit
-                          ? `http://localhost:3001/backend1/api/${this.state.ss}`
+                          ? `https://twoxone-app.herokuapp.com/backend1/api/${this.state.ss}`
                           : noImg
                       }
                       className={styles.img1}

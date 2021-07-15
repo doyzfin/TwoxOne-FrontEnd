@@ -185,7 +185,7 @@ class Home extends Component {
                       <div className={styles.image}>
                         <img
                           className={styles.image__img}
-                          src={`http://localhost:3001/backend1/api/${movie_image}`}
+                          src={`https://twoxone-app.herokuapp.com/backend1/api/${movie_image}`}
                           onClick={(event) =>
                             this.handleMovieDetails(event, movie_id)
                           }

@@ -37,7 +37,7 @@ class Cards extends Component {
                     <Card className={styles.cards}>
                       <Card.Img
                         variant="top"
-                        src={`http://localhost:3001/backend1/api/${item.movie_image}`}
+                        src={`https://twoxone-app.herokuapp.com/backend1/api/${item.movie_image}`}
                         className={styles.img}
                       />
                       <Card.Body className={styles.cardBody}>
@@ -65,7 +65,7 @@ class Cards extends Component {
                     <Card className={styles.cards}>
                       <Card.Img
                         variant="top"
-                        src={`http://localhost:3001/backend1/api/${item.movie_image}`}
+                        src={`https://twoxone-app.herokuapp.com/backend1/api/${item.movie_image}`}
                         className={styles.img}
                       />
                       <Card.Body className={styles.cardBody}>

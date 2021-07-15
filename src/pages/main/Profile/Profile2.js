@@ -49,7 +49,7 @@ class Profile extends Component {
 
                 <img
                   alt=""
-                  src={`http://localhost:3001/backend1/api/user/${user_image}`}
+                  src={`https://twoxone-app.herokuapp.com/backend1/api/user/${user_image}`}
                   className={styles.userImg}
                 />
                 <h1 className={styles.userName}>{user_name}</h1>

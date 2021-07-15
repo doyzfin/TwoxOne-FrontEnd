@@ -76,7 +76,7 @@ class ModalView extends Component {
                   <Col xs={3} key={index}>
                     <Card className={styles.movieCard}>
                       <Card.Img
-                        src={`http://localhost:3001/backend1/api/${movie_image}`}
+                        src={`https://twoxone-app.herokuapp.com/backend1/api/${movie_image}`}
                         className={styles.imgMovie}
                         onClick={(event) => this.props.mv(event, movie_id)}
                       />

@@ -197,7 +197,7 @@ class Admin extends Component {
                         <Card.Img
                           src={
                             this.state.isUpdate
-                              ? `http://localhost:3001/backend1/api/${this.state.form.movieImage}`
+                              ? `https://twoxone-app.herokuapp.com/backend1/api/${this.state.form.movieImage}`
                               : noImg
                           }
                         />

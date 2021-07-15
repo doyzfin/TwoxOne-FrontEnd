@@ -182,7 +182,7 @@ class NavBar extends Component {
                       <Card className={styles.cardMovie}>
                         <img
                           alt="card"
-                          src={`http://localhost:3001/backend1/api/${item.movie_image}`}
+                          src={`https://twoxone-app.herokuapp.com/backend1/api/${item.movie_image}`}
                           className={styles.imgCard}
                         />
                         <p>{item.movie_name}</p>
@@ -211,7 +211,7 @@ class NavBar extends Component {
             </Button>
             <img
               alt="profile"
-              src={`http://localhost:3001/backend1/api/user/${this.state.data.user_image}`}
+              src={`https://twoxone-app.herokuapp.com/backend1/api/user/${this.state.data.user_image}`}
               className={styles.imagePP}
             />
           </Navbar.Collapse>
